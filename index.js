@@ -82,6 +82,13 @@ client.on("message", async message => { // Message handler event.
       
   }
 
+  // KAT COMMAND
+  if(command === "kat" || command === "miscat" || command === "miscatsquad"){
+    var interval = setInterval (function () {
+      message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
+    }, 1 * 30000);   
+  }
+
   // NICK COMMAND
   if(command === "nick") { // Check if the command is .nick.
       
@@ -99,7 +106,6 @@ client.on("message", async message => { // Message handler event.
     message.guild.members.get(client.user.id).setNickname(newNickname);
       
   }
-
    
   // INFO COMMAND
   if(command === "info") { // Check if the command is .info.
@@ -133,7 +139,7 @@ client.on("message", async message => { // Message handler event.
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
       return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .kick command!"); // If user doesn't have the Owner or Admin role.
-    
+
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
     if(!member) // If the member doesn't exist.
