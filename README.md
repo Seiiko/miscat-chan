@@ -1,0 +1,1 @@
+Bot exclusively created for MiscatSquad's Discord Server.
