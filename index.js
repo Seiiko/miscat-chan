@@ -84,10 +84,11 @@ client.on("message", async message => { // Message handler event.
 
   // KAT COMMAND
   if(command === "kat" || command === "miscat" || command === "miscatsquad"){
-    message.delete();  
+    message.delete();
+    message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
     var interval = setInterval (function () {
       message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
-    }, 1 * 300000);   
+    }, 1 * 1800000);   
   }
 
   // NICK COMMAND
