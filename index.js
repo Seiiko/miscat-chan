@@ -16,7 +16,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     // Sending message to main channel.
     const welcomeChannel = client.channels.find("name", "general-chat") //Create a variable referring to the selected channel.
     // Sending the message.
-    welcomeChannel.send("<@!"+member.user.id+"> || Fistbump! Welcome to the squad! Be sure to introduce yourself in the #miscat-squad-introductions channel to get the fun started! And if you need help the #support-group is opened to you 24/7! Make yourself at home and embrace your inner fangirl and fanboy every single day!");
+    welcomeChannel.send("<@!"+member.user.id+"> || **Fistbump! Welcome to the squad!** \nBe sure to introduce yourself in the #miscat-squad-introductions channel to get the fun started! And if you need help the #support-group is opened to you 24/7! Make yourself at home and embrace your inner fangirl and fanboy every single day!");
     
 });
 
@@ -36,13 +36,13 @@ client.on("message", function(message) {
             
             // Verify is user has the Owner role.
             if (!message.member.roles.find("name", "Moderator") || !message.member.roles.find("name", "Admin") || !message.member.roles.find("name", "NSFW Goddess")){ // If user doesn't have the Owner role.
-                message.channel.send("You don't have enough permission!") // Sends a message to the channel.
+                message.channel.sendmessage.channel.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
                 return; //Cancels the command.
             }
              
             // Verify if the variable is a number.
             if (isNaN(args[0])) {
-                message.message.send("Please specify how many messages you want deleted.") // Send a message to the channel.
+                message.message.send("Testing multiple lines. \nPlease specify how many messages you want deleted.") // Send a message to the channel.
                 return; // Cancels the command.
             }
              
@@ -95,7 +95,7 @@ client.on("message", async message => { // Message handler event.
       
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
-      return message.reply("you don't have enough permission to perform this command!"); // If user doesn't have the Owner or Admin role.
+      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .say command!"); // If user doesn't have the Owner or Admin role.
     
     // Get the message 
     const sayMessage = args.join(" ");
@@ -113,7 +113,7 @@ client.on("message", async message => { // Message handler event.
       
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
-      return message.reply("you don't have enough permission to perform this command!"); // If user doesn't have the Owner or Admin role.
+      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .kick command!"); // If user doesn't have the Owner or Admin role.
     
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
@@ -139,7 +139,7 @@ client.on("message", async message => { // Message handler event.
 
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
-      return message.reply("you don't have enough permission to perform this command!."); // If user doesn't have the Owner or Admin role.
+      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .ban command!"); // If user doesn't have the Owner or Admin role.
     
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
