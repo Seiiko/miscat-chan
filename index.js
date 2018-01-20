@@ -83,10 +83,20 @@ client.on("message", async message => { // Message handler event.
   }
 
   // NICK COMMAND
-  if(command === "nickname") { // Check if the command is .info.
+  if(command === "nick") { // Check if the command is .nick.
       
-    //Send a message to the channel.
-   message.guild.members.get(client.user.id).setNickname("Miscat-chan");
+    // Limit it to admins.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // If user doesn't have the Owner or Admin role.
+    
+    // Get the message 
+    const newNickname = args.join(" ");
+    
+    // Delete the command message.
+    message.delete()
+    
+    // Get the bot to say the message.
+    message.guild.members.get(client.user.id).setNickname(newNickname);
       
   }
 
@@ -100,7 +110,7 @@ client.on("message", async message => { // Message handler event.
   }
   
   // SAY COMMAND
-  if(command === "say") { // Check if the command is !say.
+  if(command === "say") { // Check if the command is .say.
       
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
@@ -118,7 +128,7 @@ client.on("message", async message => { // Message handler event.
   }
 
   // KICK COMMAND
-  if(command === "kick") { // Check if the command is !kick.
+  if(command === "kick") { // Check if the command is .kick.
       
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
@@ -144,7 +154,7 @@ client.on("message", async message => { // Message handler event.
   }
   
   // BAN COMMAND
-  if(command === "ban") { // Check if the command is !ban.
+  if(command === "ban") { // Check if the command is .ban.
 
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
