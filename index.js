@@ -87,7 +87,7 @@ client.on("message", async message => { // Message handler event.
     message.delete();  
     var interval = setInterval (function () {
       message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
-    }, 1 * 30000);   
+    }, 1 * 300000);   
   }
 
   // NICK COMMAND
