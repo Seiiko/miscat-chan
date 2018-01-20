@@ -151,7 +151,7 @@ client.on("message", async message => { // Message handler event.
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":question: | Please provide a valid reason for the ban. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
+      return message.channel.send(":question: | Please provide a valid reason for the ban. \n:question: | **Usage:** .ban [member] [reason]"); // Send message to channel.
     
     // Ban the member.
     await member.ban(reason)
