@@ -42,7 +42,7 @@ client.on("message", function(message) {
              
             // Verify if the variable is a number.
             if (isNaN(args[0])) {
-                message.channel.send(":question: | Please specify how many messages you want deleted. \nUsage: .purge [number of messages]") // Send a message to the channel.
+                message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge [number of messages]") // Send a message to the channel.
                 return; // Cancels the command.
             }
              
@@ -125,7 +125,7 @@ client.on("message", async message => { // Message handler event.
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":question: | Please provide a valid reason for the kick. \nUsage: .kick [member] [reason]"); // Send message to channel.
+      return message.channel.send(":question: | Please provide a valid reason for the kick. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
     
     // Kick the member.
     await member.kick(reason)
@@ -151,7 +151,7 @@ client.on("message", async message => { // Message handler event.
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":question: | Please provide a valid reason for the ban. \nUsage: .kick [member] [reason]"); // Send message to channel.
+      return message.channel.send(":question: | Please provide a valid reason for the ban. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
     
     // Ban the member.
     await member.ban(reason)
