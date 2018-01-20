@@ -214,6 +214,9 @@ client.on("message", async message => { // Message handler event.
     var grades = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; // Possible answers.
     var rank = grades[Math.floor(Math.random() * grades.length)]; // Variable which stores the random answer.
     const rateThis = args.join(" "); // What is there to be rated.
+
+    if(rateThis === "Sei" || rateThis === "Seiko" || rateThis === "your owner" || rateThis === "my owner" )
+      return message.channel.send(":thinking: | Sei can only be a 10/10!")
   
     // Send the message
     message.channel.send(":thinking: | Hm... I rate " + rateThis + " a " + rank + "/10!")
