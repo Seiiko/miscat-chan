@@ -84,27 +84,32 @@ client.on("message", async message => { // Message handler event.
 
   // KAT COMMAND
   if(command === "kat" || command === "miscat" || command === "miscatsquad"){
-    message.delete();
-    message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
-    var interval = setInterval (function () {
+    if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .kat command!"); // Send message to the channel.
+    
+    // Send a message every 60 minutes with Kat's channel.
+    message.delete(); // Delete the command message.
+    message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad") // Send the first message.
+    var interval = setInterval (function () { // Set the interval.
       message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
-    }, 1 * 1800000);   
-  }
+    }, 1 * 3600000); // Change value here.   
+
+  } 
 
   // NICK COMMAND
   if(command === "nick") { // Check if the command is .nick.
       
     // Limit it to admins.
-    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
-      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // If user doesn't have the Owner or Admin role.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
     
-    // Get the message 
+    // Get the nickname. 
     const newNickname = args.join(" ");
     
     // Delete the command message.
     message.delete()
     
-    // Get the bot to say the message.
+    // Change the bot's nickname.
     message.guild.members.get(client.user.id).setNickname(newNickname);
       
   }
@@ -121,8 +126,8 @@ client.on("message", async message => { // Message handler event.
   if(command === "say") { // Check if the command is .say.
       
     // Limit it to admins.
-    if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Owner or Admin role.
-      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .say command!"); // If user doesn't have the Owner or Admin role.
+    if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .say command!"); // Send a message to the channel.
     
     // Get the message 
     const sayMessage = args.join(" ");
@@ -187,6 +192,34 @@ client.on("message", async message => { // Message handler event.
   
   }
     
+});
+
+// FUN COMMANDS
+client.on("message", async message => { // Message handler event.
+  
+  // Ignore other bots, including itself.
+  if(message.author.bot) return;
+  
+  // Ignore messages without prefix.
+  if(message.content.indexOf(prefix) !== 0) return;
+  
+  // Separate the "command" name, and our "arguments" for the command.
+  const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
+  const command = args.shift().toLowerCase(); // Define the command constant.
+
+  // RATE COMMAND
+  if(command === "rate") { // Check if the command is .rate.
+    
+    // Define variables.
+    var grades = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]; // Possible answers.
+    var rank = grades[Math.floor(Math.random() * grades.length)]; // Variable which stores the random answer.
+    const rateThis = args.join(" "); // What is there to be rated.
+  
+    // Send the message
+    message.channel.send(":thinking: | Hm... I rate " + rateThis + " a " + rank + "/10!")
+      
+  }    
+
 });
 
 // GET THE BOT'S TOKEN, DON'T CHANGE
