@@ -36,13 +36,13 @@ client.on("message", function(message) {
             
             // Verify is user has the Owner role.
             if (!message.member.roles.find("name", "Moderator") || !message.member.roles.find("name", "Admin") || !message.member.roles.find("name", "NSFW Goddess")){ // If user doesn't have the Owner role.
-                message.channel.send(":no_entry_sign: | Testing multiple lines. \nYou don't have enough permission to perform the .purge command!") // Sends a message to the channel.
+                message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
                 return; //Cancels the command.
             }
              
             // Verify if the variable is a number.
             if (isNaN(args[0])) {
-                message.message.send("Please specify how many messages you want deleted.") // Send a message to the channel.
+                message.message.send(":question: | Please specify how many messages you want deleted. \nUsage: .purge [number of messages]") // Send a message to the channel.
                 return; // Cancels the command.
             }
              
@@ -86,7 +86,7 @@ client.on("message", async message => { // Message handler event.
   if(command === "info") { // Check if the command is .info.
       
     //Send a message to the channel.
-    message.channel.send("Miscat-chan, the official Miscat Squad's Discord Bot! Made by Sei.")
+    message.channel.send(":wave: | I'm Miscat-chan, the official Miscat Squad's Discord Bot! Made by Sei. If you have any suggestion to improve me, make sure to DM her!")
       
   }
   
@@ -125,7 +125,7 @@ client.on("message", async message => { // Message handler event.
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.reply("why do you wanna kick them? Use the command again and include a reason after the command!"); // Send message to channel.
+      return message.channel.send(":question: | Please provide a valid reason for the kick. \nUsage: .kick [member] [reason]"); // Send message to channel.
     
     // Kick the member.
     await member.kick(reason)
@@ -151,7 +151,7 @@ client.on("message", async message => { // Message handler event.
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.reply("why do you wanna ban them? Use the command again and include a reason after the command!"); // Send message to channel.
+      return message.channel.send(":question: | Please provide a valid reason for the ban. \nUsage: .kick [member] [reason]"); // Send message to channel.
     
     // Ban the member.
     await member.ban(reason)
