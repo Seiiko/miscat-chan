@@ -36,7 +36,7 @@ client.on("message", function(message) {
             
             // Verify is user has the Owner role.
             if (!message.member.roles.find("name", "Moderator") || !message.member.roles.find("name", "Admin") || !message.member.roles.find("name", "NSFW Goddess")){ // If user doesn't have the Owner role.
-                message.message.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
+                message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
                 return; //Cancels the command.
             }
              
