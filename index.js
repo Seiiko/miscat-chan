@@ -36,13 +36,13 @@ client.on("message", function(message) {
             
             // Verify is user has the Owner role.
             if (!message.member.roles.find("name", "Moderator") || !message.member.roles.find("name", "Admin") || !message.member.roles.find("name", "NSFW Goddess")){ // If user doesn't have the Owner role.
-                message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
+                message.channel.send(":no_entry_sign: | Testing multiple lines. \nYou don't have enough permission to perform the .purge command!") // Sends a message to the channel.
                 return; //Cancels the command.
             }
              
             // Verify if the variable is a number.
             if (isNaN(args[0])) {
-                message.message.send("Testing multiple lines. \nPlease specify how many messages you want deleted.") // Send a message to the channel.
+                message.message.send("Please specify how many messages you want deleted.") // Send a message to the channel.
                 return; // Cancels the command.
             }
              
