@@ -42,7 +42,7 @@ client.on("message", function(message) {
              
             // Verify if the variable is a number.
             if (isNaN(args[0])) {
-                message.message.send(":question: | Please specify how many messages you want deleted. \nUsage: .purge [number of messages]") // Send a message to the channel.
+                message.channel.send(":question: | Please specify how many messages you want deleted. \nUsage: .purge [number of messages]") // Send a message to the channel.
                 return; // Cancels the command.
             }
              
