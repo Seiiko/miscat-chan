@@ -81,6 +81,15 @@ client.on("message", async message => { // Message handler event.
     m.edit(`:ping_pong: | Your ping is ${m.createdTimestamp - message.createdTimestamp}ms.`) // Edit the message to show the user's ping.
       
   }
+
+  // NICK COMMAND
+  if(command === "nickname") { // Check if the command is .info.
+      
+    //Send a message to the channel.
+   message.guild.members.get(client.user.id).setNickname("Miscat-chan");
+      
+  }
+
    
   // INFO COMMAND
   if(command === "info") { // Check if the command is .info.
