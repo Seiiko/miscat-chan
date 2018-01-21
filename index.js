@@ -1,8 +1,10 @@
 // SETUP THE BOT
 const Discord = require('discord.js');
 const client = new Discord.Client();
+
 const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
+const imageSearch = require('node-google-image-search');
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -63,6 +65,33 @@ client.on("message", function(message) {
         
     }
              
+});
+
+// IMAGE SEARCH COMMAND
+client.on("message", async message => { // Message handler event.
+  
+  // Ignore other bots, including itself.
+  if(message.author.bot) return;
+  
+  // Ignore messages without prefix.
+  if(message.content.indexOf(prefix) !== 0) return;
+  
+  // Separate the "command" name, and our "arguments" for the command.
+  const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
+  const command = args.shift().toLowerCase(); // Define the command constant.
+
+  if(command === 'search'){
+    // Define the search results variable.
+    var results = imageSearch(args[0], callback, 0, 5);
+
+   // Show the results.
+    function callback(results) {
+    m essage.channel.send(results);
+
+    }
+    
+  }
+
 });
 
 // REGULAR COMMANDS
@@ -230,19 +259,19 @@ client.on("message", async message => { // Message handler event.
   }
   
   // CATFACT COMMAND
-  if(command === "catfact"){
+  if(command === "catfact"){ // Check if the command is .catfact.
     let randomFact = catFacts.random();
     message.channel.send(":smiley_cat: | " + randomFact + ".");
   }
 
   //DOGFACT COMMAND
-  if(command === "dogfact"){
+  if(command === "dogfact"){ // Check if the command is .dogfact.
     let randomFact = dogFacts.random();
     message.channel.send(":dog: | " + randomFact);
   }
 
   // POTATO COMMAND
-  if(command === "potato"){
+  if(command === "potato"){ // Check if the command is .potato.
 
     // Define the message variable.
     var potato = ":potato:"
