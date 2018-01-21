@@ -4,7 +4,7 @@ const client = new Discord.Client();
 
 const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
-const imageSearch = require('node-google-image-search');
+
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -231,8 +231,8 @@ client.on("message", async message => { // Message handler event.
       
   }
 
-  // ROLLDIE COMMAND
-  if(command === "rolldie") { // Check if the command is .rolldie.
+  // DIEROLL COMMAND
+  if(command === "dieroll") { // Check if the command is .dieroll.
     
     // Define variables.
     var sides = ["1", "2", "3", "4", "5", "6"]; // Possible answers.
@@ -243,8 +243,8 @@ client.on("message", async message => { // Message handler event.
       
   }
 
-  // FLIPCOIN COMMAND
-  if(command === "flipcoin") { // Check if the command is .flipcoin.
+  // COINFLIP COMMAND
+  if(command === "coinflip") { // Check if the command is .coinflip.
     
     // Define variables.
     var coinSides = ["tails", "heads"]; // Possible answers.
