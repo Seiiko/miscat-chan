@@ -110,7 +110,7 @@ client.on("message", async message => { // Message handler event.
     // Kick the member.
     await member.kick(reason)
       .catch(error => message.reply(`Sorry ${message.author} I couldn't kick because of : ${error}`));
-    message.channel.send(`:zap: || <@!`+member.user.id+`> has been kicked by <@!`+message.author.id+`>. \n::zap: || Reason: ${reason}`);
+    message.channel.send(`:zap: || <@!`+member.user.id+`> has been kicked by <@!`+message.author.id+`>. \n:zap: || Reason: ${reason}`);
   
   }
     
@@ -136,7 +136,7 @@ client.on("message", async message => { // Message handler event.
     // Ban the member.
     await member.ban(reason)
       .catch(error => message.reply(`Sorry ${message.author}, I couldn't ban because of : ${error}`));
-    message.channel.send(`:zap: || <@!`+member.user.id+`> has been banned by <@!`+message.author.id+`>. \n::zap: || Reason: ${reason}`);
+    message.channel.send(`:zap: || <@!`+member.user.id+`> has been banned by <@!`+message.author.id+`>. \n:zap: || Reason: ${reason}`);
     
   }
   
@@ -304,7 +304,7 @@ client.on("message", async message => { // Message handler event.
     message.channel.send(":smiley_cat: | " + randomFact + ".");
   }
 
-  //DOGFACT COMMAND
+  // DOGFACT COMMAND
   if(command === "dogfact"){ // Check if the command is .dogfact.
     let randomFact = dogFacts.random();
     message.channel.send(":dog: | " + randomFact);
