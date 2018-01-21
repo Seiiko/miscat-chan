@@ -86,7 +86,7 @@ client.on("message", async message => { // Message handler event.
 
    // Show the results.
     function callback(results) {
-    message.channel.send(String(results);
+    message.channel.send(String(results));
 
     }
 
