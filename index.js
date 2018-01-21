@@ -229,7 +229,7 @@ client.on("message", async message => { // Message handler event.
 
     // Totally not scripted V2.
     if(rateThis === "Kat" || rateThis === "Katya" || rateThis === "Miscat" || rateThis === "Miscat Squad")
-    return message.channel.send(":thinking: | Sei can only be a 10/10!")
+      return message.channel.send(":thinking: | Kat can only be a 10/10!")
   
     // Send the message
     message.channel.send(":thinking: | Hm... I rate " + rateThis + " a " + rank + "/10!")
