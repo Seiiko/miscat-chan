@@ -226,6 +226,10 @@ client.on("message", async message => { // Message handler event.
     // Totally not scripted.
     if(rateThis === "Sei" || rateThis === "Seiko" || rateThis === "your owner" || rateThis === "my owner")
       return message.channel.send(":thinking: | Sei can only be a 10/10!")
+
+    // Totally not scripted V2.
+    if(rateThis === "Kat" || rateThis === "Katya" || rateThis === "Miscat" || rateThis === "Miscat Squad")
+    return message.channel.send(":thinking: | Sei can only be a 10/10!")
   
     // Send the message
     message.channel.send(":thinking: | Hm... I rate " + rateThis + " a " + rank + "/10!")
@@ -286,7 +290,9 @@ client.on("message", async message => { // Message handler event.
   }
 
   //PUPPY COMMAND
-  if(command === "puppy"){ // Check if the command is .puppy.
+  if(command === "puppy" || command === "puppies"){ // Check if the command is .puppy.
+
+    // Send the puppy picture.
     randomPuppy()
     .then(url => {
         message.channel.send(url);
