@@ -342,7 +342,7 @@ client.on("message", async message => { // Message handler event.
   if(command === "katgif") { // Check if the command is .katgif.
 
     // Define variables.
-    var gifs = ["https://i.imgur.com/nlwCh6J.gifv", "https://i.imgur.com/XwzmfwB.gifv", "https://i.imgur.com/sT67iix.gifv"]; // Possible answers.
+    var gifs = ["https://i.imgur.com/nlwCh6J.gif", "https://i.imgur.com/XwzmfwB.gif", "https://i.imgur.com/sT67iix.gif"]; // Possible answers.
     var gif = gifs[Math.floor(Math.random() * gifs.length)]; // Variable which stores the random answer.
  
     // Send the test pic
@@ -357,7 +357,3 @@ client.on("message", async message => { // Message handler event.
 
 // GET THE BOT'S TOKEN, DON'T CHANGE
 client.login(process.env.BOT_TOKEN);
-
-//https://i.imgur.com/nlwCh6J.gifv
-//https://i.imgur.com/XwzmfwB.gifv
-//https://i.imgur.com/sT67iix.gifv
