@@ -249,7 +249,7 @@ client.on("message", async message => { // Message handler event.
 
     // Check if the argument is a number.
     if (isNaN(args[0])) {
-      return message.channel.send(":question: | That's not a valid number. \n:question: | Usage: .potato [number of potatoes])";
+      return message.channel.send(":question: | That's not a valid number. \n:question: | Usage: .potato [number of potatoes]");
 
     }
 
