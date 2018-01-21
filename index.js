@@ -6,10 +6,6 @@ const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
 const randomPuppy = require('random-puppy');
 
-"use strict";
-const motivation = require("motivation");
-
-
 // DEFINE THE PREFIX
 const prefix = ".";
 
@@ -202,6 +198,25 @@ client.on("message", async message => { // Message handler event.
     message.reply(`${member.user.tag} has been banned by ${message.author.tag} because: ${reason}`);
   
   }
+
+  // REPORT COMMAND
+  if(command === "report") { // Check if the command is .report.
+
+    // Check if there the member is valid.
+    let member = message.mentions.members.first(); // Define the member variable.
+    if(!member) // If the member doesn't exist.
+    return message.author.send(":question: | This member doesn't exist!. \n:question: | **Usage:** .report [member] [reason]"); // Send message to the user.
+
+    // Get the reason.
+    let reason = args.slice(1).join(' '); // Define the reason variable.
+    if(!reason) // If there's no reason.
+      return message.author.send(":question: | Please provide a valid reason for the report. \n:question: | **Usage:** .report [member] [reason]"); // Send message to the user.
+
+    // Send the message to the security channel.
+    const secChannel = client.channels.find("name", "mod-security-and-reports") //Create a variable referring to the selected channel.
+    // Sending the message.
+    secChannel.send(`:warning: || ${member.user.tag} has been reported by ${message.author.tag}. \n:warning: || Reason: ${reason}`)
+  }
     
 });
 
@@ -300,17 +315,6 @@ client.on("message", async message => { // Message handler event.
     .then(url => {
         message.channel.send(url);
     })
-
-  }
-
-  // MOTIVATE COMMAND
-  if(command === "motivate" || command === "motivational" || command === "mq"){ // Check if the command is .motivate.
-    
-    // Define the random quote variable.
-    var mot = motivation.get();
-
-    // Send a random motivational quote.
-    message.channel.send(":gift_heart: | " + mot)
 
   }
 
