@@ -67,33 +67,6 @@ client.on("message", function(message) {
              
 });
 
-// IMAGE SEARCH COMMAND
-client.on("message", async message => { // Message handler event.
-  
-  // Ignore other bots, including itself.
-  if(message.author.bot) return;
-  
-  // Ignore messages without prefix.
-  if(message.content.indexOf(prefix) !== 0) return;
-  
-  // Separate the "command" name, and our "arguments" for the command.
-  const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
-  const command = args.shift().toLowerCase(); // Define the command constant.
-
-  if(command === 'search'){
-    // Define the search results variable.
-    var results = imageSearch(args[0], callback, 0, 1);
-
-   // Show the results.
-    function callback(results) {
-    message.channel.send(String(results));
-
-    }
-
-  }
-
-});
-
 // REGULAR COMMANDS
 client.on("message", async message => { // Message handler event.
   
@@ -255,6 +228,30 @@ client.on("message", async message => { // Message handler event.
   
     // Send the message
     message.channel.send(":thinking: | Hm... I rate " + rateThis + " a " + rank + "/10!")
+      
+  }
+
+  // ROLLDIE COMMAND
+  if(command === "rolldie") { // Check if the command is .rolldie.
+    
+    // Define variables.
+    var sides = ["1", "2", "3", "4", "5", "6"]; // Possible answers.
+    var side = sides[Math.floor(Math.random() * sides.length)]; // Variable which stores the random answer.
+
+    // Send the message
+    message.channel.send(":game_die: | You got a " + side)
+      
+  }
+
+  // FLIPCOIN COMMAND
+  if(command === "flipcoin") { // Check if the command is .flipcoin.
+    
+    // Define variables.
+    var coinSides = ["tails", "heads"]; // Possible answers.
+    var coinSide = coinSides[Math.floor(Math.random() * coinSides.length)]; // Variable which stores the random answer.
+
+    // Send the message
+    message.channel.send(":slot_machine: | You got a " + coinSide)
       
   }
   
