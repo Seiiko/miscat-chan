@@ -304,7 +304,7 @@ client.on("message", async message => { // Message handler event.
   }
 
   // MOTIVATE COMMAND
-  if(command === "motivate" || command === "motivational" || command = "mq") { // Check if the command is .motivate.
+  if(command === "motivate" || command === "motivational" || command === "mq"){ // Check if the command is .motivate.
     
     // Define the random quote variable.
     var mot = motivation.get();
