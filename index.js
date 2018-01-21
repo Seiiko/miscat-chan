@@ -82,7 +82,7 @@ client.on("message", async message => { // Message handler event.
 
   if(command === 'search'){
     // Define the search results variable.
-    var results = imageSearch(args[0], callback, 0, 5);
+    var results = imageSearch('love', callback, 0, 1); //args[0]
 
    // Show the results.
     function callback(results) {
