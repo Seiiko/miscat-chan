@@ -346,7 +346,7 @@ client.on("message", async message => { // Message handler event.
     var gif = gifs[Math.floor(Math.random() * gifs.length)]; // Variable which stores the random answer.
  
     // Send the test pic
-    message.channel.send(), {
+    message.channel.send(, {
       file: gif
 
     }) 
