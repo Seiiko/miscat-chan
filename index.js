@@ -86,10 +86,10 @@ client.on("message", async message => { // Message handler event.
 
    // Show the results.
     function callback(results) {
-    m essage.channel.send(results);
+    message.channel.send(results);
 
     }
-    
+
   }
 
 });
