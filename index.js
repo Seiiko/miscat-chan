@@ -1,6 +1,7 @@
 // SETUP THE BOT
 const Discord = require('discord.js');
 const client = new Discord.Client();
+var fact = require('random-fact');
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -215,13 +216,19 @@ client.on("message", async message => { // Message handler event.
     var rank = grades[Math.floor(Math.random() * grades.length)]; // Variable which stores the random answer.
     const rateThis = args.join(" "); // What is there to be rated.
 
-    if(rateThis === "Sei" || rateThis === "Seiko" || rateThis === "your owner" || rateThis === "my owner" )
+    // Totally not scripted.
+    if(rateThis === "Sei" || rateThis === "Seiko" || rateThis === "your owner" || rateThis === "my owner")
       return message.channel.send(":thinking: | Sei can only be a 10/10!")
   
     // Send the message
     message.channel.send(":thinking: | Hm... I rate " + rateThis + " a " + rank + "/10!")
       
-  }    
+  }
+  
+  // FACT COMMAND
+  if(command === "fact"){
+    message.channel.send(fact())
+  }
 
 });
 
