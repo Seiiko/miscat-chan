@@ -227,7 +227,7 @@ client.on("message", async message => { // Message handler event.
   
   // FACT COMMAND
   if(command === "fact"){
-    message.channel.send(fact())
+    message.channel.send(String(fact())
   }
 
 });
