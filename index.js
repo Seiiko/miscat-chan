@@ -228,7 +228,7 @@ client.on("message", async message => { // Message handler event.
   // CATFACT COMMAND
   if(command === "catfact"){
     let randomFact = catFacts.random();
-    message.channel.send(randomFact)
+    message.channel.send(":smiley_cat: | " + randomFact + "!");
   }
 
 });
