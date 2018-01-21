@@ -31,6 +31,7 @@
   "dependencies": {
     "cat-facts": "^1.0.2",
     "discord.js": "^11.2.1",
+    "dog-facts": "^1.0.3",
     "random-fact": "^1.1.0"
   }
 }

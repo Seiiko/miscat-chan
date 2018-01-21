@@ -2,6 +2,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const catFacts = require('cat-facts');
+const dogFacts = require('dog-facts');
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -229,6 +230,12 @@ client.on("message", async message => { // Message handler event.
   if(command === "catfact"){
     let randomFact = catFacts.random();
     message.channel.send(":smiley_cat: | " + randomFact + "!");
+  }
+
+  //DOGFACT COMMAND
+  if(command === "dogfact"){
+    let randomFact = dogFacts.random();
+    message.channel.send(":dog: | " + randomFact + "!");
   }
 
 });
