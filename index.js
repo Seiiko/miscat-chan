@@ -229,13 +229,13 @@ client.on("message", async message => { // Message handler event.
   // CATFACT COMMAND
   if(command === "catfact"){
     let randomFact = catFacts.random();
-    message.channel.send(":smiley_cat: | " + randomFact + "!");
+    message.channel.send(":smiley_cat: | " + randomFact + ".");
   }
 
   //DOGFACT COMMAND
   if(command === "dogfact"){
     let randomFact = dogFacts.random();
-    message.channel.send(":dog: | " + randomFact + "!");
+    message.channel.send(":dog: | " + randomFact);
   }
 
 });
