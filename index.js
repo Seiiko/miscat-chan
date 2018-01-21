@@ -154,7 +154,7 @@ client.on("message", async message => { // Message handler event.
       return message.author.send(":interrobang: | Please provide a valid reason for the report. \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
   
     // Delete the message.
-    message.delete
+    message.delete();
 
     // Send the message to the security channel.
     const secChannel = client.channels.find("name", "mod-security-and-reports") //Create a variable referring to the selected channel.
@@ -338,7 +338,26 @@ client.on("message", async message => { // Message handler event.
 
   }
 
+  //KATGIF COMMAND
+  if(command === "katgif") { // Check if the command is .katgif.
+
+    // Define variables.
+    var gifs = ["https://i.imgur.com/nlwCh6J.gifv", "https://i.imgur.com/XwzmfwB.gifv", "https://i.imgur.com/sT67iix.gifv"]; // Possible answers.
+    var gif = gifs[Math.floor(Math.random() * gifs.length)]; // Variable which stores the random answer.
+ 
+    // Send the test pic
+    message.channel.send(), {
+      file: gif
+
+    }) 
+
+  }
+
 });
 
 // GET THE BOT'S TOKEN, DON'T CHANGE
 client.login(process.env.BOT_TOKEN);
+
+//https://i.imgur.com/nlwCh6J.gifv
+//https://i.imgur.com/XwzmfwB.gifv
+//https://i.imgur.com/sT67iix.gifv
