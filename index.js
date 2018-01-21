@@ -1,7 +1,7 @@
 // SETUP THE BOT
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var fact = require('random-fact');
+const catFacts = require('cat-facts');
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -225,9 +225,10 @@ client.on("message", async message => { // Message handler event.
       
   }
   
-  // FACT COMMAND
-  if(command === "fact"){
-    message.channel.send(String(fact()))
+  // CATFACT COMMAND
+  if(command === "catfact"){
+    let randomFact = catFacts.random();
+    message.channel.send(randomFact)
   }
 
 });
