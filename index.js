@@ -206,7 +206,7 @@ client.on("message", async message => { // Message handler event.
            
   })
 
-}
+});
 
 // REGULAR COMMANDS
 client.on("message", async message => { // Message handler event.
