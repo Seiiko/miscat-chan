@@ -40,12 +40,14 @@ client.on("message", function(message) {
             if (!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name))){ // If user doesn't have the Owner role.
                 message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
                 return; //Cancels the command.
+
             }
              
             // Verify if the variable is a number.
             if (isNaN(args[0])) {
                 message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge [number of messages]") // Send a message to the channel.
                 return; // Cancels the command.
+
             }
              
             const fetched = await message.channel.fetchMessages({limit: args[0]}); //Grab the number used in the !purge command.
@@ -53,6 +55,7 @@ client.on("message", function(message) {
             //Deleting the messages.
             message.channel.bulkDelete(fetched)
                 .catch(error => message.channel.send("Error: ${error}")); // In case of error, post it in the channel.
+
          }
          
         //Calling the function.
@@ -236,6 +239,23 @@ client.on("message", async message => { // Message handler event.
   if(command === "dogfact"){
     let randomFact = dogFacts.random();
     message.channel.send(":dog: | " + randomFact);
+  }
+
+  // POTATO COMMAND
+  if(command === "potato"){
+
+    // Define the message variable.
+    var potato = ":potato:"
+
+    // Check if the argument is a number.
+    if (isNaN(args[0])) {
+      return message.channel.send(":question: | That's not a valid number. \n:question: | Usage: .potato [number of potatoes]);
+
+    }
+
+    // Send the message.
+    message.channel.send(potato.repeat(args[0]));
+
   }
 
 });
