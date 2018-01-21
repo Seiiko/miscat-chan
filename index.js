@@ -239,7 +239,7 @@ client.on("message", async message => { // Message handler event.
     var side = sides[Math.floor(Math.random() * sides.length)]; // Variable which stores the random answer.
 
     // Send the message
-    message.channel.send(":game_die: | You got a " + side)
+    message.channel.send(":game_die: | You got a " + side + "!")
       
   }
 
@@ -251,7 +251,7 @@ client.on("message", async message => { // Message handler event.
     var coinSide = coinSides[Math.floor(Math.random() * coinSides.length)]; // Variable which stores the random answer.
 
     // Send the message
-    message.channel.send(":slot_machine: | You got a " + coinSide)
+    message.channel.send(":slot_machine: | You got a " + coinSide + "!")
       
   }
   
