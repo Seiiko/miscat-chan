@@ -6,6 +6,9 @@ const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
 const randomPuppy = require('random-puppy');
 
+"use strict";
+ const motivation = require("../lib");
+
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -289,7 +292,7 @@ client.on("message", async message => { // Message handler event.
 
   }
 
-  //PUPPY COMMAND
+  // PUPPY COMMAND
   if(command === "puppy" || command === "puppies"){ // Check if the command is .puppy.
 
     // Send the puppy picture.
@@ -297,6 +300,17 @@ client.on("message", async message => { // Message handler event.
     .then(url => {
         message.channel.send(url);
     })
+
+  }
+
+  // MOTIVATE COMMAND
+  if(command === "motivate" || command === "motivational" || command = "mq") { // Check if the command is .motivate.
+    
+    // Define the random quote variable.
+    var mot = motivation.get();
+
+    // Send a random motivational quote.
+    message.channel.send(":gift_heart: | " + mot)
 
   }
 
