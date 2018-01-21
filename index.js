@@ -7,7 +7,7 @@ const dogFacts = require('dog-facts');
 const randomPuppy = require('random-puppy');
 
 "use strict";
- const motivation = require("../lib");
+const motivation = require("../lib");
 
 
 // DEFINE THE PREFIX
