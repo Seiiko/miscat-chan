@@ -157,14 +157,14 @@ client.on("message", async message => { // Message handler event.
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
     if(!member) // If the member doesn't exist.
-      return message.reply("this member does not exist!"); // Send message to channel.
+      return message.channel.send(":interrobang: | This member doesn't exist! \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
     if(!member.kickable) // If the member has a higher role than the bot.
-      return message.reply("I cannot kick this user!"); // Send message to channel.
+      return message.channel.send(":no_entry_sign: | I cannot kick this user!"); // Send message to channel.
     
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":question: | Please provide a valid reason for the kick. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
+      return message.channel.send(":interrobang: | Please provide a valid reason for the kick. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
     
     // Kick the member.
     await member.kick(reason)
@@ -183,14 +183,14 @@ client.on("message", async message => { // Message handler event.
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
     if(!member) // If the member doesn't exist.
-      return message.reply("this member does not exist!");  // Send message to channel.
+      return message.channel.send(":interrobang: | This member doesn't exist! \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
     if(!member.bannable) // If the member has a higher role than the bot.
-      return message.reply("I cannot ban this user!"); // Send message to channel.
+      return message.channel.send(":no_entry_sign: | I cannot ban this user!"); // Send message to channel.
 
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":question: | Please provide a valid reason for the ban. \n:question: | **Usage:** .ban [member] [reason]"); // Send message to channel.
+      return message.channel.send(":interrobang: | Please provide a valid reason for the ban. \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
     
     // Ban the member.
     await member.ban(reason)
@@ -205,17 +205,17 @@ client.on("message", async message => { // Message handler event.
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
     if(!member) // If the member doesn't exist.
-    return message.author.send(":question: | This member doesn't exist!. \n:question: | **Usage:** .report [member] [reason]"); // Send message to the user.
+    return message.author.send(":interrobang: | This member doesn't exist! \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
 
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.author.send(":question: | Please provide a valid reason for the report. \n:question: | **Usage:** .report [member] [reason]"); // Send message to the user.
+      return message.author.send(":interrobang: | Please provide a valid reason for the report. \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
 
     // Send the message to the security channel.
     const secChannel = client.channels.find("name", "mod-security-and-reports") //Create a variable referring to the selected channel.
     // Sending the message.
-    secChannel.send(`:warning: || ${member.user.tag} has been reported by ${message.author.tag}. \n:warning: || Reason: ${reason}`)
+    secChannel.send(`:warning: || <@!`+member.user.id+`> has been reported by <@!`+message.author.id+`>. \n:warning: || Reason: ${reason}`)
   }
     
 });
