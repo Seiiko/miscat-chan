@@ -4,6 +4,7 @@ const client = new Discord.Client();
 
 const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
+const randomPuppy = require('random-puppy');
 
 
 // DEFINE THE PREFIX
@@ -251,7 +252,7 @@ client.on("message", async message => { // Message handler event.
     var coinSide = coinSides[Math.floor(Math.random() * coinSides.length)]; // Variable which stores the random answer.
 
     // Send the message
-    message.channel.send(":slot_machine: | You got a " + coinSide + "!")
+    message.channel.send(":slot_machine: | You got " + coinSide + "!")
       
   }
   
@@ -281,6 +282,15 @@ client.on("message", async message => { // Message handler event.
 
     // Send the message.
     message.channel.send(potato.repeat(args[0]));
+
+  }
+
+  //PUPPY COMMAND
+  if(command === "puppy"){ // Check if the command is .puppy.
+    randomPuppy()
+    .then(url => {
+        message.channel.send(url);
+    })
 
   }
 
