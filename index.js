@@ -294,28 +294,21 @@ client.on("message", async message => { // Message handler event.
 
     .setColor("#95dbdb")
     .setDescription("For help with a specific command, type \".help [command]\".")
+
     .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
 
     .setURL("https://www.youtube.com/c/miscatsquad")
 
-    .addBlankField(true)
-
     .addField("Regular Commands",
     ".help  |  .info  |  .ping  |  .report")
-
-    .addBlankField(true)
 
     .addField("Fun Commands",
     ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
 
-    .addBlankField(true)
-
     .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
     .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
 
-    .addBlankField(true)
-
-  message.channel.send(embedHelp);
+  message.channel.send( embedHelp);
 
   }
 
