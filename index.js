@@ -287,42 +287,35 @@ client.on("message", async message => { // Message handler event.
   // HELP COMMAND
   if(command === "help") { // Check if the command is .help.
 
-    const helpEmbed = {
-      "title": "Check out what the Miscat Squad has to offer!",
-      "description": "For help with a specific command, type \".help [command]\".",
-      "url": "https://www.youtube.com/c/miscatsquad",
-      "color": 99997,
-      "footer": {
-        "icon_url": "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png",
-        "text": "Miscat-chan, the Miscat Squad bot!"
-      },
-      "author": {
-        "name": "Miscat-chan - Help",
-        "icon_url": "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png"
-      },
-      "fields": [
-        {
-          "name": "Regular Commands",
-          "value": ".help  |  .info  |  .ping  |  .report"
-        },
-        {
-          "name": "Fun Commands",
-          "value": ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate"
-        },
-        {
-          "name": "Admin Commands",
-          "value": ".ban  |  .kat  |  .kick  |  .purge  |  .say",
-          "inline": true
-        },
-        {
-          "name": "Bot Owner Commands",
-          "value": ".avatar  |  .nick  |  .status  |  .utag",
-          "inline": true
-        }
-      ]
-    };
+  const embedHelp = new Discord.RichEmbed()
 
-    message.channel.send({helpEmbed});
+    .setTitle("Check out what the Miscat Squad has to offer!")
+    .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+    .setColor("#95dbdb")
+    .setDescription("For help with a specific command, type \".help [command]\".")
+    .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+    .setURL("https://www.youtube.com/c/miscatsquad")
+
+    .addBlankField(true)
+
+    .addField("Regular Commands",
+    ".help  |  .info  |  .ping  |  .report")
+
+    .addBlankField(true)
+
+    .addField("Fun Commands",
+    ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
+
+    .addBlankField(true)
+
+    .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
+    .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
+
+    .addBlankField(true)
+
+  message.channel.send({embedHelp});
 
   }
 
