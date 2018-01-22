@@ -332,7 +332,7 @@ client.on("message", async message => { // Message handler event.
       .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
       .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
 
-    message.user.send(embedHelp);
+    message.member.send(embedHelp);
     message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
   }
