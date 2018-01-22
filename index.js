@@ -6,6 +6,8 @@ const client = new Discord.Client();
 const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
 const randomPuppy = require('random-puppy');
+const randomQuote = require('random-quote');
+var fact = require('random-fact');
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -472,6 +474,13 @@ client.on("message", async message => { // Message handler event.
       file: gif
 
     })
+
+  }
+
+  // FACT COMMAND
+  if(command === "fact" || command === "rf") {
+
+    fact();
 
   }
 
