@@ -18,10 +18,34 @@ client.on('ready', () => { // When the bot is ready.
 // WELCOMING NEW MEMBERS
 client.on("guildMemberAdd", member => { // Listener event: user joining the server.
     
-    // Sending message to main channel.
-    const welcomeChannel = client.channels.find("name", "general-chat") //Create a variable referring to the selected channel.
-    // Sending the message.
-    welcomeChannel.send("<@!"+member.user.id+"> || **Fistbump! Welcome to the squad!** \nBe sure to introduce yourself in the #miscat-squad-introductions channel to get the fun started! And if you need help the #support-group is opened to you 24/7! Make yourself at home and embrace your inner fangirl and fanboy every single day!");
+  // Defining the variables.
+  const welcomeChannel = client.channels.find("name", "general-chat") // Create a variable referring to the selected channel.
+  const embedCommands = new Discord.RichEmbed() // Create a constant referring to the embed message.
+
+    .setTitle("Check out what the Miscat Squad has to offer!")
+    .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+    .setColor("#95dbdb")
+    .setDescription("For help with a specific command, type \".help [command]\".")
+
+    .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+    .setURL("https://www.youtube.com/c/miscatsquad")
+
+    .addField("Regular Commands",
+    ".help  |  .info  |  .ping  |  .report")
+
+    .addField("Fun Commands",
+    ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
+
+    .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
+    .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
+
+  // Sending the messages.
+  welcomeChannel.send("<@!"+member.user.id+"> || **Fistbump! Welcome to the squad!** \nBe sure to introduce yourself in the #miscat-squad-introductions channel to get the fun started! And if you need help the #support-group is opened to you 24/7! Make yourself at home and embrace your inner fangirl and fanboy every single day!");
+  member.send("**Fistbump! Welcome to the squad!** \nBe sure to introduce yourself in the #miscat-squad-introductions channel to get the fun started! And if you need help the #support-group is opened to you 24/7! Make yourself at home and embrace your inner fangirl and fanboy every single day!");
+  member.send(":white_check_mark: | Here's a list of all the commands of the bot! Write \".help [command name]\" to get specific help with that command.");
+  member.send(embedCommands);
     
 });
 
@@ -308,7 +332,8 @@ client.on("message", async message => { // Message handler event.
     .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
     .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
 
-  message.channel.send( embedHelp);
+  message.user.send(embedHelp);
+  message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!)
 
   }
 
