@@ -311,29 +311,29 @@ client.on("message", async message => { // Message handler event.
   // HELP COMMAND
   if(command === "help") { // Check if the command is .help.
 
-  const embedHelp = new Discord.RichEmbed()
+    const embedHelp = new Discord.RichEmbed()
 
-    .setTitle("Check out what the Miscat Squad has to offer!")
-    .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+      .setTitle("Check out what the Miscat Squad has to offer!")
+      .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
 
-    .setColor("#95dbdb")
-    .setDescription("For help with a specific command, type \".help [command]\".")
+      .setColor("#95dbdb")
+      .setDescription("For help with a specific command, type \".help [command]\".")
 
-    .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+      .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
 
-    .setURL("https://www.youtube.com/c/miscatsquad")
+      .setURL("https://www.youtube.com/c/miscatsquad")
 
-    .addField("Regular Commands",
-    ".help  |  .info  |  .ping  |  .report")
+      .addField("Regular Commands",
+      ".help  |  .info  |  .ping  |  .report")
 
-    .addField("Fun Commands",
-    ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
+      .addField("Fun Commands",
+      ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
 
-    .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
-    .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
+      .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
+      .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
 
-  message.user.send(embedHelp);
-  message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!)
+    message.user.send(embedHelp);
+    message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
   }
 
