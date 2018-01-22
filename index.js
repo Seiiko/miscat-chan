@@ -315,7 +315,7 @@ client.on("message", async message => { // Message handler event.
 
     .addBlankField(true)
 
-  message.channel.send({embedHelp});
+  message.channel.send(embedHelp);
 
   }
 
