@@ -25,7 +25,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     
 });
 
-// ADMIN COMMANDS
+// BOT OWNER COMMANDS
 client.on("message", async message => { // Message handler event.
   
   // Ignore other bots, including itself.
@@ -38,10 +38,10 @@ client.on("message", async message => { // Message handler event.
   const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
   const command = args.shift().toLowerCase(); // Define the command constant.
 
-  // NICK COMMAND (BOT OWNER ONLY)
+  // NICK COMMAND
   if(command === "nick") { // Check if the command is .nick.
       
-    // Limit it to admins.
+    // Limit it to the bot owner.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
       return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
     
@@ -56,17 +56,86 @@ client.on("message", async message => { // Message handler event.
       
   }
 
+  // AVATAR COMMAND
+  if (command === "avatar") { // Check if the command is .avatar
+    
+    // Limit it to the bot owner.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
+    
+    // Get the avatar. 
+    const newAvatar = args.join(" ");
+    
+    // Delete the command message.
+    message.delete()
+    
+    // Change the bot's avatar.
+    message.guild.members.get(client.user.id).setAvatar(newAvatar);
+  
+  }
+
+  // UTAG COMMAND
+  if (command === "utag") { // Check if the command is .utag.
+  
+    // Limit it to the bot owner.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
+    
+    // Get the user tag. 
+    const newTag = args.join(" ");
+    
+    // Delete the command message.
+    message.delete()
+    
+    // Change the bot's user tag.
+    message.guild.members.get(client.user.id).setUsername(newTag);
+
+  }
+
+  // STATUS COMMAND
+  if (command === "status") { // Check if the command is .status.
+
+    // Limit it to the bot owner.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
+    
+    // Get the status. 
+    const newStatus = args.join(" ");
+    
+    // Delete the command message.
+    message.delete()
+    
+    // Change the bot's status.
+    client.user.setPresence({ game: { name: newStatus, type: 0 } }); // Set the bot's status.
+
+  }
+
+});
+
+// ADMIN COMMANDS
+client.on("message", async message => { // Message handler event.
+  
+  // Ignore other bots, including itself.
+  if(message.author.bot) return;
+  
+  // Ignore messages without prefix.
+  if(message.content.indexOf(prefix) !== 0) return;
+  
+  // Separate the "command" name, and our "arguments" for the command.
+  const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
+  const command = args.shift().toLowerCase(); // Define the command constant.
+
   // KAT COMMAND
-  if(command === "kat" || command === "miscat" || command === "miscatsquad"){
+  if(command === "kat"){ // Check if the command is .kat.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
       return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .kat command!"); // Send message to the channel.
     
-    // Send a message every 60 minutes with Kat's channel.
+    // Send a message every 6 hours with Kat's channel.
     message.delete(); // Delete the command message.
     message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad") // Send the first message.
     var interval = setInterval (function () { // Set the interval.
       message.channel.send(":star: | Don't forget to check out Miscat Squad's channel! \n:star: | https://www.youtube.com/c/miscatsquad")
-    }, 1 * 3600000); // Change value here.   
+    }, 1 * 21600000); // Change value here.   
 
   } 
 
@@ -139,29 +208,6 @@ client.on("message", async message => { // Message handler event.
     message.channel.send(`:zap: || <@!`+member.user.id+`> has been banned by <@!`+message.author.id+`>. \n:zap: || Reason: ${reason}`);
     
   }
-  
-  // REPORT COMMAND
-  if(command === "report") { // Check if the command is .report.
-  
-    // Check if there the member is valid.
-    let member = message.mentions.members.first(); // Define the member variable.
-    if(!member) // If the member doesn't exist.
-      return message.author.send(":interrobang: | This member doesn't exist! \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
-  
-    // Get the reason.
-    let reason = args.slice(1).join(' '); // Define the reason variable.
-    if(!reason) // If there's no reason.
-      return message.author.send(":interrobang: | Please provide a valid reason for the report. \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
-  
-    // Delete the message.
-    message.delete();
-
-    // Send the message to the security channel.
-    const secChannel = client.channels.find("name", "mod-security-and-reports") //Create a variable referring to the selected channel.
-    // Sending the message.
-    secChannel.send(`:warning: || <@!`+member.user.id+`> has been reported by <@!`+message.author.id+`>. \n:warning: || Reason: ${reason}`)
-  
-  }
 
   // PURGE COMMAND
   client.on("message", function(message) {
@@ -231,11 +277,76 @@ client.on("message", async message => { // Message handler event.
   }
    
   // INFO COMMAND
-  if(command === "info") { // Check if the command is .info.
+  if(command === "info") { // Check if the command is .info.      
       
     //Send a message to the channel.
-    message.channel.send(":wave: | I'm Miscat-chan, the official Miscat Squad's Discord Bot! Made by Sei. If you have any suggestion to improve me, make sure to DM her!")
+    message.channel.send(":wave: | I'm Miscat-chan, the official Miscat Squad's Discord Bot!\n:wave: | Made by Sei. If you have any suggestion to improve me, make sure to DM her!\n:wave: | Version: 1.0.2")
       
+  }
+
+  // HELP COMMAND
+  if(command === "help") { // Check if the command is .help.
+
+    const helpEmbed = {
+      "title": "Check out what the Miscat Squad has to offer!",
+      "description": "For help with a specific command, type \".help [command]\".",
+      "url": "https://www.youtube.com/c/miscatsquad",
+      "color": 99997,
+      "footer": {
+        "icon_url": "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png",
+        "text": "Miscat-chan, the Miscat Squad bot!"
+      },
+      "author": {
+        "name": "Miscat-chan - Help",
+        "icon_url": "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png"
+      },
+      "fields": [
+        {
+          "name": "Regular Commands",
+          "value": ".help  |  .info  |  .ping  |  .report"
+        },
+        {
+          "name": "Fun Commands",
+          "value": ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate"
+        },
+        {
+          "name": "Admin Commands",
+          "value": ".ban  |  .kat  |  .kick  |  .purge  |  .say",
+          "inline": true
+        },
+        {
+          "name": "Bot Owner Commands",
+          "value": ".avatar  |  .nick  |  .status  |  .utag",
+          "inline": true
+        }
+      ]
+    };
+
+    channel.message.send({helpEmbed});
+
+  }
+
+  // REPORT COMMAND
+  if(command === "report") { // Check if the command is .report.
+  
+    // Check if there the member is valid.
+    let member = message.mentions.members.first(); // Define the member variable.
+    if(!member) // If the member doesn't exist.
+      return message.author.send(":interrobang: | This member doesn't exist! \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
+  
+    // Get the reason.
+    let reason = args.slice(1).join(' '); // Define the reason variable.
+    if(!reason) // If there's no reason.
+      return message.author.send(":interrobang: | Please provide a valid reason for the report. \n:interrobang: |  **Usage:** .report [member] [reason]"); // Send message to the user.
+  
+    // Delete the message.
+    message.delete();
+
+    // Send the message to the security channel.
+    const secChannel = client.channels.find("name", "mod-security-and-reports") //Create a variable referring to the selected channel.
+    // Sending the message.
+    secChannel.send(`:warning: || <@!`+member.user.id+`> has been reported by <@!`+message.author.id+`>. \n:warning: || Reason: ${reason}`)
+  
   }
     
 });
@@ -338,7 +449,7 @@ client.on("message", async message => { // Message handler event.
 
   }
 
-  //KATGIF COMMAND
+  // KATGIF COMMAND
   if(command === "katgif") { // Check if the command is .katgif.
 
     // Define variables.
