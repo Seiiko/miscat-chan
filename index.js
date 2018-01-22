@@ -322,7 +322,7 @@ client.on("message", async message => { // Message handler event.
       ]
     };
 
-    channel.message.send({helpEmbed});
+    message.channel.send({helpEmbed});
 
   }
 
