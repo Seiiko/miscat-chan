@@ -461,6 +461,17 @@ client.on("message", async message => { // Message handler event.
 
   }
 
+  // SEISFAVE COMMAND
+  if(command === "seisfave" || command === "sf"){
+
+    // Send the message.
+    message.channel.send(":ok_hand: | Sei's favorite!", {
+      file: "https://vignette.wikia.nocookie.net/p__/images/d/d2/Episode_three_kenny.png/revision/latest?cb=20140509191606&path-prefix=protagonist"
+
+    })
+
+  }
+
   // KATGIF COMMAND
   if(command === "katgif") { // Check if the command is .katgif.
 
