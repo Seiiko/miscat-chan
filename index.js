@@ -5,9 +5,8 @@ const client = new Discord.Client();
 // SETUP THE DEPENDENCIES
 const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
-const randomPuppy = require('random-puppy');
-const randomQuote = require('random-quote');
-var fact = require('random-fact');
+const randomPuppy = require('random-puppy');\
+const motivQuotes = require('motivational-quotes');\
 
 // DEFINE THE PREFIX
 const prefix = ".";
@@ -477,11 +476,10 @@ client.on("message", async message => { // Message handler event.
 
   }
 
-  // FACT COMMAND
-  if(command === "fact" || command === "rf") {
-
-    fact();
-
+  // CATFACT COMMAND
+  if(command === "catfact"){ // Check if the command is .catfact.
+    let randomQuote = motivQuotes.random();
+    message.channel.send(":smiley_cat: | " + randomQuote + ".");
   }
 
 });
