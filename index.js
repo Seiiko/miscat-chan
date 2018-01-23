@@ -5,8 +5,8 @@ const client = new Discord.Client();
 // SETUP THE DEPENDENCIES
 const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
-const randomPuppy = require('random-puppy');\
-const motivQuotes = require('motivational-quotes');\
+const randomPuppy = require('random-puppy');
+const motivQuotes = require('motivational-quotes');
 
 // DEFINE THE PREFIX
 const prefix = ".";
