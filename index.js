@@ -37,7 +37,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     ".help  |  .info  |  .ping  |  .report")
 
     .addField("Fun Commands",
-    ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
+    ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
 
     .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
     .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
@@ -86,7 +86,7 @@ client.on("message", async message => { // Message handler event.
     
     // Limit it to the bot owner.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
-      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .avatar command!"); // Send message to the channel.
     
     // Get the avatar. 
     const newAvatar = args.join(" ");
@@ -104,7 +104,7 @@ client.on("message", async message => { // Message handler event.
   
     // Limit it to the bot owner.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
-      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .utag command!"); // Send message to the channel.
     
     // Get the user tag. 
     const newTag = args.join(" ");
@@ -122,7 +122,7 @@ client.on("message", async message => { // Message handler event.
 
     // Limit it to the bot owner.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
-      return message.channel.send(":no_entry_sign: | Only Sei can perform the .nick command!"); // Send message to the channel.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .status command!"); // Send message to the channel.
     
     // Get the status. 
     const newStatus = args.join(" ");
@@ -132,6 +132,23 @@ client.on("message", async message => { // Message handler event.
     
     // Change the bot's status.
     client.user.setPresence({ game: { name: newStatus, type: 0 } }); // Set the bot's status.
+
+  }
+
+  // TEST COMMAND
+  if (command === "test") { // Check if the command is .test.
+  
+    // Limit it to the bot owner.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+      return message.channel.send(":no_entry_sign: | Only Sei can perform the .test command!"); // Send message to the channel.
+  
+    if (args == 0){
+      message.channel.send("No arguments specified!")
+    } else if (args == 1) {
+      message.channel.send("An argument was specified!")
+    } else {
+      message.channel.send("More than one argument was specified!")
+    }
 
   }
 
@@ -328,10 +345,10 @@ client.on("message", async message => { // Message handler event.
       ".help  |  .info  |  .ping  |  .report")
 
       .addField("Fun Commands",
-      ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .potato  |  .puppy  |  .rate")
+      ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
 
       .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
-      .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
+      .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .test  |  .utag", true)
 
     message.member.send(embedHelp);
     message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
