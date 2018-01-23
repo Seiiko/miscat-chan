@@ -427,6 +427,8 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedReport);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
+    } else {
+      return;
     }
 
   }
