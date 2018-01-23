@@ -355,7 +355,7 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedHelp);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } else if(args === "help"){
+    } else if(args[0] === "help"){
 
       const embedHelpCm = new Discord.RichEmbed()
 
@@ -373,7 +373,7 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedHelpCm);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } else if(args === "info"){
+    } else if(args[0] === "info"){
 
       const embedInfo = new Discord.RichEmbed()
 
@@ -391,7 +391,7 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedInfo);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } else if(args === "ping"){
+    } else if(args[0] === "ping"){
 
       const embedPing = new Discord.RichEmbed()
 
@@ -409,7 +409,7 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedPing);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } else if(args === "report"){
+    } else if(args[0] === "report"){
 
       const embedReport = new Discord.RichEmbed()
 
