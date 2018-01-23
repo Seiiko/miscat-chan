@@ -479,7 +479,7 @@ client.on("message", async message => { // Message handler event.
   // MOTIV COMMAND
   if(command === "motiv" || command === "mq"){ // Check if the command is .catfact.
     let randomQuote = motivQuotes.random();
-    message.channel.send(":smiley_cat: | " + randomQuote + ".");
+    message.channel.send(randomQuote + ".");
   }
 
 });
