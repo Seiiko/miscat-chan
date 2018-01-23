@@ -37,7 +37,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     ".help  |  .info  |  .ping  |  .report")
 
     .addField("Fun Commands",
-    ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
+    ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
 
     .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
     .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
@@ -347,7 +347,7 @@ client.on("message", async message => { // Message handler event.
         ".help  |  .info  |  .ping  |  .report")
 
         .addField("Fun Commands",
-        ".catfact  |  .coinflip  |  .dieroll  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
+        ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
 
         .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
         .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .test  |  .utag", true)
@@ -413,7 +413,7 @@ client.on("message", async message => { // Message handler event.
 
       const embedReport = new Discord.RichEmbed()
 
-        .setTitle("The .ping command.")
+        .setTitle("The .report command.")
         .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
 
         .setColor("#95dbdb")
@@ -425,6 +425,231 @@ client.on("message", async message => { // Message handler event.
         ".report [member] [reason]")
 
       message.member.send(embedReport);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "catfact"){
+
+      const embedCat = new Discord.RichEmbed()
+
+        .setTitle("The .catfact command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("Use this command to get a random cat fact.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".catfact")
+
+      message.member.send(embedCat);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "coinflip"){
+
+      const embedCoin = new Discord.RichEmbed()
+
+        .setTitle("The .coinflip command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("This command will give you one of two results: heads or tails.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".coinflip")
+
+      message.member.send(embedCoin);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "dieroll"){
+
+      const embedDie = new Discord.RichEmbed()
+
+        .setTitle("The .dieroll command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("This command will give you a random number from 1 to six.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".dieroll")
+
+      message.member.send(embedDie);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "katgif"){
+
+      const embedKatGif = new Discord.RichEmbed()
+
+        .setTitle("The .katgif command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("This command will give you a random gif of Kat's reactions (still adding more).")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".katgif")
+
+      message.member.send(embedKatGif);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "motiv" || args[0] === "mq"){
+
+      const embedMotiv = new Discord.RichEmbed()
+
+        .setTitle("The .motiv command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("Feeling down? This command will give you a random motivational quote.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".motiv")
+
+        .addField("Aliases",
+        ".mq")
+
+      message.member.send(embedMotiv);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "potato"){
+
+      const embedPotato = new Discord.RichEmbed()
+
+        .setTitle("The .potato command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("Potatoes for everyone. Specify a number from 1 to 250 and you'll get potatoes.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".potato [number of potatoes]")
+
+      message.member.send(embedPotato);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "puppy" || args[0] === "puppies"){
+
+      const embedPuppy = new Discord.RichEmbed()
+
+        .setTitle("The .puppy command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("This command will give you a random puppy picture.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".puppy")
+
+        .addField("Aliases",
+        ".puppies")
+
+      message.member.send(embedPuppy);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "dogfact"){
+
+      const embedDog = new Discord.RichEmbed()
+
+        .setTitle("The .dogfact command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("This command will give you a random dog fact.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".dogfact")
+
+      message.member.send(embedDog);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "rate"){
+
+      const embedRate = new Discord.RichEmbed()
+
+        .setTitle("The .rate command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("The bot will give its opinion about anything you want to. It'll rate it from 0 to 10 out of 10.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".rate [what to rate]")
+
+      message.member.send(embedRate);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "seisfave" || args[0] === "sf"){
+
+      const embedSei = new Discord.RichEmbed()
+
+        .setTitle("The .seisfave command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("The Boatmaster God.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".seisfave")
+
+        .addField("Aliases",
+        ".sf")
+
+      message.member.send(embedSei);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "ban"){
+
+      const embedBan = new Discord.RichEmbed()
+
+        .setTitle("The .ban command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Ban a member.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".ban [member] [reason]")
+
+      message.member.send(embedBan);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "kat"){
+
+      const embedKat = new Discord.RichEmbed()
+
+        .setTitle("The .kat command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Start the schedule for Kat's channel advertisement.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".kat")
+
+      message.member.send(embedKat);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
     } else {
@@ -561,7 +786,7 @@ client.on("message", async message => { // Message handler event.
 
     // Send the message.
     message.channel.send(":ok_hand: | Sei's favorite!", {
-      file: "https://i.imgur.com/kGmedkR.png"
+      file: "https://i.imgur.com/Fhi66ja.png"
 
     })
 
