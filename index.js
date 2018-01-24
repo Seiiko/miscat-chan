@@ -145,13 +145,7 @@ client.on("message", async message => { // Message handler event.
     if (args == 1){
       message.channel.send("This'd be a number.")
     } else if (args == 2) {
-      if(args[0] === message.mentions.users.first()){
-        message.channel.send("Mention and number.")
-      } else {
-        message.channel.send("Keyword and number.")
-      }
-    } else if (args == 3) {
-      message.channel.send("Keyword, mention and number.")
+      message.channel.send("Keyword and number.")
     } else {
       message.channel.send("Invalid format.")
     }
