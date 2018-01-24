@@ -8,6 +8,9 @@ const dogFacts = require('dog-facts');
 const randomPuppy = require('random-puppy');
 const motivQuotes = require('motivational-quotes');
 
+// DEFINE THE NECESSARY VARIABLES
+var comOn = false; // Switch varible for the .day command.
+
 // DEFINE THE PREFIX
 const prefix = ".";
 
@@ -166,9 +169,6 @@ client.on("message", async message => { // Message handler event.
   // Separate the "command" name, and our "arguments" for the command.
   const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
   const command = args.shift().toLowerCase(); // Define the command constant.
-
-   // Define the switch variable for the .day command.
-  var comOn = false;
 
   // KAT COMMAND
   if(command === "kat"){ // Check if the command is .kat.
