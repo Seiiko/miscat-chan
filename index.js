@@ -301,6 +301,21 @@ client.on("message", async message => { // Message handler event.
            
   })
 
+  // DAY COMMAND
+  if(command === "day"){
+    
+    // Turn on and off.
+    let comOn = false; // Define the switch variable.
+    if (comOn = false){ // If the command is not activated.
+      comOn = true; // Activate the command.
+      message.channel.send(":white_check_mark: | The daily command has been activated."); // Notify the user.
+    } else { // If the command is already activated.
+      comOn = false; // Deactivate the command.
+      message.channel.send(":no_entry: | The daily command is now deactivated.") // Notify the user.
+    }
+
+  }
+
 });
 
 // REGULAR COMMANDS
