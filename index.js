@@ -167,6 +167,9 @@ client.on("message", async message => { // Message handler event.
   const args = message.content.slice(prefix.length).trim().split(/ +/g); // Define the arguments constant.
   const command = args.shift().toLowerCase(); // Define the command constant.
 
+   // Define the switch variable for the .day command.
+  var comOn = false;
+
   // KAT COMMAND
   if(command === "kat"){ // Check if the command is .kat.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
@@ -305,13 +308,14 @@ client.on("message", async message => { // Message handler event.
   if(command === "day"){
     
     // Turn on and off.
-    let comOn = false; // Define the switch variable.
     if (comOn = false){ // If the command is not activated.
       comOn = true; // Activate the command.
       message.channel.send(":white_check_mark: | The daily command has been activated."); // Notify the user.
+
     } else { // If the command is already activated.
       comOn = false; // Deactivate the command.
       message.channel.send(":no_entry: | The daily command is now deactivated.") // Notify the user.
+
     }
 
   }
