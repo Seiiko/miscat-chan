@@ -274,14 +274,14 @@ client.on("message", async message => { // Message handler event.
         }
 
         if(args == 0){
-          message.channel.send(":interrogbang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
+          message.channel.send(":interrobang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
           return;
 
         } else if(isNaN(args[0])){
-          message.channel.send(":interrogbang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
+          message.channel.send(":interrobang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
           return;
 
-        } else if(!isNan(args[0])){
+        } else if(!isNaN(args[0])){
 
           // Grab the number used.
           const fetched = await message.channel.fetchMessages({limit: args[0]});
