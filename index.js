@@ -142,9 +142,9 @@ client.on("message", async message => { // Message handler event.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
       return message.channel.send(":no_entry_sign: | Only Sei can perform the .test command!"); // Send message to the channel.
   
-    if (args == 1){
+    if (args = 1){
       message.channel.send("This'd be a number.")
-    } else if (args == 2) {
+    } else if (args = 2) {
       message.channel.send("Keyword and number.")
     } else {
       message.channel.send("Invalid format.")
