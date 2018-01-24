@@ -142,12 +142,18 @@ client.on("message", async message => { // Message handler event.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
       return message.channel.send(":no_entry_sign: | Only Sei can perform the .test command!"); // Send message to the channel.
   
-    if (args == 0){
-      message.channel.send("No arguments specified!")
-    } else if (args == 1) {
-      message.channel.send("An argument was specified!")
+    if (args == 1){
+      message.channel.send("This'd be a number.")
+    } else if (args == 2) {
+      if(args[1] = message.mentions.users.first()){
+        message.channel.send("Mention and number.")
+      } else {
+        message.channel.send("Keyword and number.")
+      }
+    } else if (args == 3) {
+      message.channel.send("Keyword, mention and number.")
     } else {
-      message.channel.send("More than one argument was specified!")
+      message.channel.send("Invalid format.")
     }
 
   }
@@ -259,6 +265,7 @@ client.on("message", async message => { // Message handler event.
     let sender = message.author; // Find who the message's author is.
     let cont = message.content.slice(prefix.length).split(" "); // Slice off the prefix, put the rest in array based off the spaces.
     let args = cont.slice(1); // Slice off the command in cont, only leaving the number left.
+    let mnt = message.mentions.users.first();
   
     // Command.
     if (msg.startsWith(prefix + "PURGE")) { // Check if the command starts with .purge.
@@ -271,20 +278,37 @@ client.on("message", async message => { // Message handler event.
           return; //Cancels the command.
 
         }
+
+        if(args == 1){
+
+          // Verify if the variable is a number.
+          if (isNaN(args[0])) {
+            message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge [number of messages]") // Send a message to the channel.
+            return; // Cancels the command.
+
+          }
            
-        // Verify if the variable is a number.
-        if (isNaN(args[0])) {
-          message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge [number of messages]") // Send a message to the channel.
-          return; // Cancels the command.
+          const fetched = await message.channel.fetchMessages({limit: args[0]}); //Grab the number used in the !purge command.
+          
+          // Deleting the messages.
+          message.channel.bulkDelete(fetched)
+            .catch(error => message.channel.send("Error: ${error}")); // In case of error, post it in the channel.
+
+        } if(args == 2){
+
+          // Verify if the second argument is a number.
+          if (isNaN(args[1])){
+            message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge (keyword) (member) [number of messages]") // Send a message to the channel.
+            return; // Cancels the command.
+
+          }
+
+          if (args[1] = mnt){
+
+          }
 
         }
            
-        const fetched = await message.channel.fetchMessages({limit: args[0]}); //Grab the number used in the !purge command.
-          
-        //Deleting the messages.
-        message.channel.bulkDelete(fetched)
-          .catch(error => message.channel.send("Error: ${error}")); // In case of error, post it in the channel.
-
       }
        
       //Calling the function.
@@ -652,8 +676,152 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedKat);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
+    } else if(args[0] === "kick"){
+
+      const embedKick = new Discord.RichEmbed()
+
+        .setTitle("The .kick command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Kick a member.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".kick [member] [reason]")
+
+      message.member.send(embedKick);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "purge"){
+
+      const embedPurge = new Discord.RichEmbed()
+
+        .setTitle("The .ourge command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Clean a set number of messages (maximum of 100, minimum of 2).")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".purge")
+
+      message.member.send(embedPurge);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "say"){
+
+      const embedSay = new Discord.RichEmbed()
+
+        .setTitle("The .say command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Makes the bot say whatever you want.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".say")
+
+      message.member.send(embedSay);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "avatar"){
+
+      const embedAvatar = new Discord.RichEmbed()
+
+        .setTitle("The .avatar command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[BOT OWNER ONLY] Changes the bot's profile picture.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".avatar")
+
+      message.member.send(embedAvatar);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "nick"){
+
+      const embedNick = new Discord.RichEmbed()
+
+        .setTitle("The .nick command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[BOT OWNER ONLY] Changes the bot's nickname.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".nick")
+
+      message.member.send(embedNick);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "status"){
+
+      const embedStatus = new Discord.RichEmbed()
+
+        .setTitle("The .status command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[BOT OWNER ONLY] Changes the bot's playing status.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".status")
+
+      message.member.send(embedStatus);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "test"){
+
+      const embedTest = new Discord.RichEmbed()
+
+        .setTitle("The .test command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[BOT OWNER ONLY] Tests various bot functions.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".test")
+
+      message.member.send(embedTest);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "utag"){
+
+      const embedTag = new Discord.RichEmbed()
+
+        .setTitle("The .utag command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[BOT OWNER ONLY] Changes the bot's user tag.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".utag")
+
+      message.member.send(embedTag);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
     } else {
-      return;
+      message.channel.send(":interrobang: | That command doesn't exist!\n:interrobang: | **Usage:** .help [command name]")
     }
 
   }
