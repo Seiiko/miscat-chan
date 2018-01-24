@@ -142,9 +142,9 @@ client.on("message", async message => { // Message handler event.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
       return message.channel.send(":no_entry_sign: | Only Sei can perform the .test command!"); // Send message to the channel.
   
-    if (args = 1){
+    if (args == 1){
       message.channel.send("This'd be a number.")
-    } else if (args = 2) {
+    } else if (args == 2) {
       message.channel.send("Keyword and number.")
     } else {
       message.channel.send("Invalid format.")
@@ -273,33 +273,22 @@ client.on("message", async message => { // Message handler event.
 
         }
 
-        if(args == 1){
+        if(args == 0){
+          message.channel.send(":interrogbang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
+          return;
 
-          // Verify if the variable is a number.
-          if (isNaN(args[0])) {
-            message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge [number of messages]") // Send a message to the channel.
-            return; // Cancels the command.
+        } else if(isNaN(args[0])){
+          message.channel.send(":interrogbang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
+          return;
 
-          }
-           
-          const fetched = await message.channel.fetchMessages({limit: args[0]}); //Grab the number used in the !purge command.
+        } else if(!isNan(args[0])){
+
+          // Grab the number used.
+          const fetched = await message.channel.fetchMessages({limit: args[0]});
           
           // Deleting the messages.
           message.channel.bulkDelete(fetched)
             .catch(error => message.channel.send("Error: ${error}")); // In case of error, post it in the channel.
-
-        } if(args == 2){
-
-          // Verify if the second argument is a number.
-          if (isNaN(args[1])){
-            message.channel.send(":question: | Please specify how many messages you want deleted. \n:question: | **Usage:** .purge (keyword) (member) [number of messages]") // Send a message to the channel.
-            return; // Cancels the command.
-
-          }
-
-          if (args[1] = mnt){
-
-          }
 
         }
            
