@@ -309,15 +309,16 @@ client.on("message", async message => { // Message handler event.
     
     // Turn on and off.
     if (comOn = false){ // If the command is not activated.
-      var comOn = true; // Activate the command.
+      var comOn = !comOn; // Activate the command.
       message.channel.send(":white_check_mark: | The daily command has been activated."); // Notify the user.
+      return comOn;
 
     }
 
     if (comOn = true){ // If the command is already activated.
-      var comOn = false; // Deactivate the command.
+      var comOn = !comOn; // Deactivate the command.
       message.channel.send(":no_entry: | The daily command is now deactivated.") // Notify the user.
-      return; // Cancel the command.
+      return comOn; // Cancel the command.
 
     }
 
