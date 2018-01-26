@@ -880,7 +880,7 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedUnmute);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } else if(args[0] === "katseries"){
+    } else if(args[0] === "katseries" || args[0] === "ks"){
 
       const embedSeries = new Discord.RichEmbed()
 
@@ -947,7 +947,8 @@ client.on("message", async message => { // Message handler event.
 
     // Check the arguments.
     if (args == 0){
-      message.channel.send(":desktop: || **The Walking Dead:** " + twd +"\n:desktop: || **The Last of Us:** " + tlou +"\n:desktop: || **Life is Strange:** " + lis +"\n:desktop: || **Top Ten Reasons:** " + top10 +"\n:desktop: || **Best of 2018:** " + b18 +"\n:desktop: || **Best of 2017:** " + b17 +"\n:desktop: || **Best of 2016:** " + b16);
+      message.member.send(":desktop: || **The Walking Dead:** " + twd +"\n:desktop: || **The Last of Us:** " + tlou +"\n:desktop: || **Life is Strange:** " + lis +"\n:desktop: || **Top Ten Reasons:** " + top10 +"\n:desktop: || **Best of 2018:** " + b18 +"\n:desktop: || **Best of 2017:** " + b17 +"\n:desktop: || **Best of 2016:** " + b16);
+      message.channel.send(":white_check_mark: || A DM has been sent to you with a list of Kat's best series.")
 
     } else if (args == "twd" || args == "thewalkingdead" || args == "the walking dead"){
       message.channel.send(":desktop: || **The Walking Dead:** " + twd);
