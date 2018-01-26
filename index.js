@@ -320,6 +320,7 @@ client.on("message", async message => { // Message handler event.
 
     // Send a message to the channel, confirming the mute.
     message.channel.send(`:white_check_mark: || <@!`+memberMute.user.id+`> has been muted by <@!`+message.author.id+`>.`);
+      .catch(error => message.channel.send(":no_entry_sign: || Couldn't mute the mentioned user. Not enough permissions."))
 
   }
 
