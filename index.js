@@ -313,13 +313,13 @@ client.on("message", async message => { // Message handler event.
     
     // Send an error message to the channel, if the mentioned member doesn't exist.
     if(!member)
-      return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .mute [member]`);
+      return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .mute [member]);
 
     // Give the Muted role to the member.
     member.addRole(role);
 
     // Send a message to the channel, confirming the mute.
-    message.channel.send(`:white_check_mark: || <@!`+member.user.id+`> has been muted by <@!`+message.author.id+`>.");
+    message.channel.send(`:white_check_mark: || <@!`+member.user.id+`> has been muted by <@!`+message.author.id+`>.`);
 
   }
 
