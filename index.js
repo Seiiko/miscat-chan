@@ -116,7 +116,7 @@ client.on("message", async message => { // Message handler event.
     message.delete()
     
     // Change the bot's user tag.
-    message.guild.members.get(client.user.id).setUsername(newTag);
+    client.user.setUsername(newTag);
 
   }
 
@@ -303,26 +303,6 @@ client.on("message", async message => { // Message handler event.
     }
            
   })
-
-  // DAY COMMAND
-  if(command === "day"){
-    
-    // Turn on and off.
-    if (comOn = false){ // If the command is not activated.
-      var comOn = !comOn; // Activate the command.
-      message.channel.send(":white_check_mark: | The daily command has been activated."); // Notify the user.
-      return comOn;
-
-    }
-
-    if (comOn = true){ // If the command is already activated.
-      var comOn = !comOn; // Deactivate the command.
-      message.channel.send(":no_entry: | The daily command is now deactivated.") // Notify the user.
-      return comOn; // Cancel the command.
-
-    }
-
-  }
 
 });
 
