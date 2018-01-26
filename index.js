@@ -880,7 +880,7 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedUnmute);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } } else if(args[0] === "katseries"){
+    } else if(args[0] === "katseries"){
 
       const embedSeries = new Discord.RichEmbed()
 
@@ -971,7 +971,7 @@ client.on("message", async message => { // Message handler event.
       message.channel.send(":desktop: || **Best of 2016:** " + b16);
 
     } else {
-      message.channel.send(":interrobang: || Couldn't find that series. Are you sure you typed it correctly?\n:interrobang: || **Usage:** .katseries [series name]\n:interrobang: || **Available series:** twd, tlou, lis, top10, best18, best17, best16.")
+      message.channel.send(":interrobang: || Couldn't find that series. Are you sure you typed it correctly?\n:interrobang: || **Usage:** .katseries [series name]\n:interrobang: || **Available series:** twd, tlou, lis, top10, best18, best17, best16.");
     }
 
   }
