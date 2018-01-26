@@ -308,18 +308,18 @@ client.on("message", async message => { // Message handler event.
   if(command === "mute") {
 
     // Define the variables.
-    let role = member.guild.roles.find("name", "Muted"); // Muted role variable.
-    let member = message.mentions.members.first(); // Mentioned user variable.
+    let role = message.guild.roles.find("name", "Muted"); // Muted role variable.
+    let memberMute = message.mentions.members.first(); // Mentioned user variable.
     
     // Send an error message to the channel, if the mentioned member doesn't exist.
-    if(!member)
+    if(!memberMute)
       return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .mute [member]");
 
     // Give the Muted role to the member.
-    member.addRole(role);
+    memberMute.addRole(role);
 
     // Send a message to the channel, confirming the mute.
-    message.channel.send(`:white_check_mark: || <@!`+member.user.id+`> has been muted by <@!`+message.author.id+`>.`);
+    message.channel.send(`:white_check_mark: || <@!`+memberMute.user.id+`> has been muted by <@!`+message.author.id+`>.`);
 
   }
 
