@@ -42,8 +42,8 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     .addField("Fun Commands",
     ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
 
-    .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
-    .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .utag", true)
+    .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .mute  |  .purge  |  .say  |  .unmute", true)
+    .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .test  |  .utag", true)
 
   // Sending the messages.
   welcomeChannel.send("<@!"+member.user.id+"> || **Fistbump! Welcome to the squad!** \nBe sure to introduce yourself in the #miscat-squad-introductions channel to get the fun started! And if you need help the #support-group is opened to you 24/7! Make yourself at home and embrace your inner fangirl and fanboy every single day!");
@@ -397,7 +397,7 @@ client.on("message", async message => { // Message handler event.
         .addField("Fun Commands",
         ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
 
-        .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .purge  |  .say", true)
+        .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .mute  |  .purge  |  .say  |  .unmute", true)
         .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .test  |  .utag", true)
 
       message.member.send(embedHelp);
@@ -842,6 +842,42 @@ client.on("message", async message => { // Message handler event.
         ".utag")
 
       message.member.send(embedTag);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "mute"){
+
+      const embedMute = new Discord.RichEmbed()
+
+        .setTitle("The .mute command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Mute a member by giving them the Muted role.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".mute")
+
+      message.member.send(embedMute);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } else if(args[0] === "unmute"){
+
+      const embedUnmute = new Discord.RichEmbed()
+
+        .setTitle("The .unmute command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("[MODERATORS ONLY] Unmute a member by removing their Muted role.")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".unmute")
+
+      message.member.send(embedUnmute);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
     } else {
