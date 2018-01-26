@@ -189,7 +189,7 @@ client.on("message", async message => { // Message handler event.
       
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
-      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .say command!"); // Send a message to the channel.
+      return message.channel.send(":no_entry_sign: || You don't have enough permission to perform the .say command!"); // Send a message to the channel.
       
     // Get the message 
     const sayMessage = args.join(" ");
@@ -207,19 +207,19 @@ client.on("message", async message => { // Message handler event.
         
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Moderator, Admin or Bot Owner role.
-        return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .kick command!"); // Send message to the channel.
+        return message.channel.send(":no_entry_sign: || You don't have enough permission to perform the .kick command!"); // Send message to the channel.
   
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
     if(!member) // If the member doesn't exist.
-      return message.channel.send(":interrobang: | This member doesn't exist! \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
+      return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
     if(!member.kickable) // If the member has a higher role than the bot.
-      return message.channel.send(":no_entry_sign: | I cannot kick this user!"); // Send message to channel.
+      return message.channel.send(":no_entry_sign: || I cannot kick this user!"); // Send message to channel.
       
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":interrobang: | Please provide a valid reason for the kick. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
+      return message.channel.send(":interrobang: || Please provide a valid reason for the kick. \n:question: | **Usage:** .kick [member] [reason]"); // Send message to channel.
       
     // Kick the member.
     await member.kick(reason)
@@ -233,19 +233,19 @@ client.on("message", async message => { // Message handler event.
   
     // Limit it to admins.
     if(!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Moderator, Admin or Bot Owner role.
-      return message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .ban command!"); // Send a message to the channel.
+      return message.channel.send(":no_entry_sign: || You don't have enough permission to perform the .ban command!"); // Send a message to the channel.
       
     // Check if there the member is valid.
     let member = message.mentions.members.first(); // Define the member variable.
     if(!member) // If the member doesn't exist.
-      return message.channel.send(":interrobang: | This member doesn't exist! \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
+      return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
     if(!member.bannable) // If the member has a higher role than the bot.
-      return message.channel.send(":no_entry_sign: | I cannot ban this user!"); // Send message to channel.
+      return message.channel.send(":no_entry_sign: || I cannot ban this user!"); // Send message to channel.
   
     // Get the reason.
     let reason = args.slice(1).join(' '); // Define the reason variable.
     if(!reason) // If there's no reason.
-      return message.channel.send(":interrobang: | Please provide a valid reason for the ban. \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
+      return message.channel.send(":interrobang: || Please provide a valid reason for the ban. \n:interrobang: | **Usage:** .ban [member] [reason]"); // Send message to channel.
       
     // Ban the member.
     await member.ban(reason)
@@ -309,10 +309,17 @@ client.on("message", async message => { // Message handler event.
 
     // Define the variables.
     let role = member.guild.roles.find("name", "Muted"); // Muted role variable.
-    let member = message.mentions.members.first(); // Mentioned user variable. 
+    let member = message.mentions.members.first(); // Mentioned user variable.
+    
+    // Send an error message to the channel, if the mentioned member doesn't exist.
+    if(!member)
+      return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .mute [member]");
 
     // Give the Muted role to the member.
-    member.addRole(role)
+    member.addRole(role);
+
+    // Send a message to the channel, confirming the mute.
+    message.channel.send(`:white_check_mark: || <@!`+member.user.id+`> has been muted by <@!`+message.author.id+`>.");
 
   }
 
