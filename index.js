@@ -37,7 +37,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     .setURL("https://www.youtube.com/c/miscatsquad")
 
     .addField("Regular Commands",
-    ".help  |  .info  |  .ping  |  .report")
+    ".help  |  .info  |  .katseries  |  .ping  |  .report")
 
     .addField("Fun Commands",
     ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
@@ -392,7 +392,7 @@ client.on("message", async message => { // Message handler event.
         .setURL("https://www.youtube.com/c/miscatsquad")
 
         .addField("Regular Commands",
-        ".help  |  .info  |  .ping  |  .report")
+        ".help  |  .info  |  .katseries  |  .ping  |  .report")
 
         .addField("Fun Commands",
         ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
@@ -878,6 +878,30 @@ client.on("message", async message => { // Message handler event.
         ".unmute")
 
       message.member.send(embedUnmute);
+      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
+
+    } } else if(args[0] === "katseries"){
+
+      const embedSeries = new Discord.RichEmbed()
+
+        .setTitle("The .katseries command.")
+        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .setColor("#95dbdb")
+        .setDescription("Get a link to Kat's best series!")
+
+        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+
+        .addField("Usage",
+        ".katseries [series name]")
+
+        .addField("Available Series",
+        "twd, tlou, lis, top10, best18, best17, best16")
+
+        .addField("Aliases",
+        ".ks")
+
+      message.member.send(embedSeries);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
     } else {
