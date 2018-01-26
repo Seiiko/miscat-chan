@@ -1,0 +1,37 @@
+Commands/features I want to add:
+
+.day (day command, notifies user everyday with a custom message related to the current date)
+
+    Messages:
+
+        Monday – Music Monday: Play your music/songs LIVE for the squad every Monday all day long! Or just tune into some awesome performances.
+        Tuesday – Let’s Play Tuesday: Tune into new Let’s Play episodes on Miscat Squad! 
+        Wednesday – Whimsical Wednesday: Jump on the Whimsical Wednesday Chatroom to play a weekly game with the squad? Favorite memes? Fun questions? You name it! Join us every Wednesday for all kinds of fun!
+        Thursday -  Let’s Play Thursday: Tune into new Let’s Play episodes, comedy skits and even reactions on Miscat Squad! 
+        Friday -  Fun Fridays: Every Friday on #fun-fridays @Acacia (Caci) will be holding a little relaxation time where everyone can just send positive messages and share their passions! "A time to just unwind and support each other is always needed!"
+
+.katseries (lets users search for series in kat's channel)
+
+    Series:
+
+        twd // the walking dead // thewalkingdead - TWD's playlist link.
+        tlou // the last of us // thelastofus - TLOU's playlist link.
+        lis // life is strange // lifeisstrange - Life is Strange's playlist link.
+        top10 // top 10 reasons // top10reasons - Top 10 Reasons's playlist link.
+        best18 // best of 2018 // bestof2018 - Best of Miscat Squad (2018)'s playlist link.
+        best17 // best of 2017 // bestof2017 - Best of Miscat Squad (2017)'s playlist link.
+        best16 // best of 2016 // bestof2016 - Best of Miscat Squad (2016)'s playlist link.
+
+More .katgif gifs.
+
+Kat's YT videos notifications on Discord.
+
+Music functionalities.
+
+    .play
+    .pause
+    .search (on YouTube)
+    .resume
+    .stop
+    .skip
+    .playlist

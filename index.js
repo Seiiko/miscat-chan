@@ -908,6 +908,49 @@ client.on("message", async message => { // Message handler event.
     secChannel.send(`:warning: || <@!`+member.user.id+`> has been reported by <@!`+message.author.id+`>. \n:warning: || Reason: ${reason}`)
   
   }
+
+  // KATSERIES COMMAND
+  if(command === "katseries" || command === "ks"){
+
+    // Define the series variables.
+    let twd = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6fG0Bc_uSov-dUKessuhkww"; // The Walking Dead Playlist.
+    let tlou = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6fWRI0cpN8Z5hII8o-YIwAk"; // The Last of Us Playlist.
+    let lis = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6dXoZmneMlwm8zNmEfIGLzZ"; // Life is Strage Playlist.
+    let top10 = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6cEZptEYgY633n_TiuBVpKI"; // Top Ten Reasons Playlist.
+    let b18 = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6f78ovfArd1AgfWwpmaEexM"; // Best of 2018 Playlist.
+    let b17 = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6d5ufz1zVxFKkthZmWFK3VJ"; // Best of 2017 Playlist.
+    let b16 = "https://www.youtube.com/playlist?list=PLHO_p3rWIB6cq3-lkPK5Rn0-dlaLaRGyE"; // Best of 2016 Playlist.
+
+    // Check the arguments.
+    if (args == 0){
+      message.channel.send(":desktop: || **The Walking Dead:** " + twd +"\n:desktop: || **The Last of Us:** " + tlou +"\n:desktop: || **Life is Strange:** " + lis +"\n:desktop: || **Top Ten Reasons:** " + top10 +"\n:desktop: || **Best of 2018:** " + b18 +"\n:desktop: || **Best of 2017:** " + b17 +"\n:desktop: || **Best of 2016:** " + b16);
+
+    } else if (args == "twd" || args == "thewalkingdead" || args == "the walking dead"){
+      message.channel.send(":desktop: || **The Walking Dead:** " + twd);
+
+    } else if (args == "tlou" || args == "thelastofus" || args == "the last of us"){
+      message.channel.send(":desktop: || **The Last of Us:** " + tlou);
+
+    } else if (args == "lis" || args == "lifeisstrange" || args == "life is strange"){
+      message.channel.send(":desktop: || **Life is Strange:** " + lis);
+
+    } else if (args == "top10" || args == "top10reasons" || args == "top 10 reasons"){
+      message.channel.send(":desktop: || **Top Ten Reasons:** " + top10);
+
+    } else if (args == "best18" || args == "bestof2018" || args == "best of 2018"){
+      message.channel.send(":desktop: || **Best of 2018:** " + b18);
+
+    } else if (args == "best17" || args == "bestof2017" || args == "best of 2017"){
+      message.channel.send(":desktop: || **Best of 2017:** " + b17);
+
+    } else if (args == "best16" || args == "bestof2016" || args == "best of 2016"){
+      message.channel.send(":desktop: || **Best of 2016:** " + b16);
+
+    } else {
+      message.channel.send(":interrobang: || Couldn't find that series. Are you sure you typed it correctly?\n:interrobang: || **Usage:** .katseries [series name]\n:interrobang: || **Available series:** twd, tlou, lis, top10, best18, best17, best16.")
+    }
+
+  }
     
 });
 
