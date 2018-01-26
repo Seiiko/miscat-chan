@@ -305,7 +305,7 @@ client.on("message", async message => { // Message handler event.
   })
 
   // MUTE COMMAND
-  if(command === "mute") {
+  if(command === "mute") { // Check if command is .mute.
 
     // Define the variables.
     let role = message.guild.roles.find("name", "Muted"); // Muted role variable.
@@ -321,6 +321,25 @@ client.on("message", async message => { // Message handler event.
 
     // Send a message to the channel, confirming the mute.
     message.channel.send(`:white_check_mark: || <@!`+memberMute.user.id+`> has been muted by <@!`+message.author.id+`>.`);
+  }
+
+  // UNMUTE COMMAND
+  if(command === "unmute") { // Check if command is .unmute.
+
+    // Define the variables.
+    let role = message.guild.roles.find("name", "Muted"); // Muted role variable.
+    let memberMute = message.mentions.members.first(); // Mentioned user variable.
+    
+    // Send an error message to the channel, if the mentioned member doesn't exist.
+    if(!memberMute)
+      return message.channel.send(":interrobang: || This member doesn't exist! \n:interrobang: | **Usage:** .mute [member]");
+
+    // Give the Muted role to the member.
+    await memberMute.removeRole(role)
+      .catch(error => message.channel.send(":no_entry_sign: || Couldn't unmute the mentioned user. Not enough permissions."));
+
+    // Send a message to the channel, confirming the mute.
+    message.channel.send(`:white_check_mark: || <@!`+memberMute.user.id+`> has been unmuted by <@!`+message.author.id+`>.`);
   }
 
 });
