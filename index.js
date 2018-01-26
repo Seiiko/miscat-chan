@@ -54,7 +54,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
 });
 
 // BOT OWNER COMMANDS
-client.on("message", async message => { // Message handler event.
+client.on("message", async message => { // Message handler event. 
   
   // Ignore other bots, including itself.
   if(message.author.bot) return;
@@ -303,6 +303,18 @@ client.on("message", async message => { // Message handler event.
     }
            
   })
+
+  // MUTE COMMAND
+  if(command === "mute") {
+
+    // Define the variables.
+    let role = member.guild.roles.find("name", "Muted"); // Muted role variable.
+    let member = message.mentions.members.first(); // Mentioned user variable. 
+
+    // Give the Muted role to the member.
+    member.addRole(role)
+
+  }
 
 });
 
