@@ -156,11 +156,13 @@ client.on("message", async message => { // Message handler event.
   }
 
   // UHM.
-  if (message.content.startsWith("Rich")) {
+  if (message.content.startsWith("killrich")) {
 
     // Limit it to the bot owner.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
     return
+
+    message.channel.send("Okay, Rich'll be killed in a few seconds.")
   
     message.channel.send("sei's a full Tsundere and she's totally into rich");
     
