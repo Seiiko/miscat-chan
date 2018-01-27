@@ -156,7 +156,7 @@ client.on("message", async message => { // Message handler event.
   }
 
   // UHM.
-  if (message.content.startsWith("I pratically hate Rich.")) {
+  if (message.content.startsWith("Rich")) {
 
     // Limit it to the bot owner.
     if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
