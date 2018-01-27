@@ -155,6 +155,17 @@ client.on("message", async message => { // Message handler event.
 
   }
 
+  // UHM.
+  if (message.content.startsWith("I pratically hate Rich.")) {
+
+    // Limit it to the bot owner.
+    if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
+    return
+  
+    message.channel.send("sei's a full Tsundere and she's totally into rich");
+    
+  }
+
 });
 
 // ADMIN COMMANDS
@@ -1110,16 +1121,6 @@ client.on("message", async message => { // Message handler event.
   }
 
 });
-
-if (message.content.startsWith("I pratically hate Rich.")) {
-
-  // Limit it to the bot owner.
-  if(!message.member.roles.some(r=>["NSFW Goddess"].includes(r.name)) ) // If user doesn't have the Admin, Moderator or Bot Owner role.
-  return
-
-  message.channel.send("sei's a full Tsundere and she's totally into rich");
-  
-}
 
 // GET THE BOT'S TOKEN, DON'T CHANGE
 client.login(process.env.BOT_TOKEN);
