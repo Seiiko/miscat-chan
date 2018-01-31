@@ -917,7 +917,7 @@ client.on("message", async message => { // Message handler event.
 
     if(args == 0) {
   
-      const embedHelp = new Discord.RichEmbed()
+      const embedHP = new Discord.RichEmbed()
   
         .setTitle("Check out what the Miscat Squad has to offer!")
         .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
@@ -938,7 +938,11 @@ client.on("message", async message => { // Message handler event.
         .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .mute  |  .purge  |  .say  |  .unmute", true)
         .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .test  |  .utag", true)
   
-      message.channel.send(embedHelp);
+      message.channel.send(embedHP);
+
+    }
+
+  }
 
   // REPORT COMMAND
   if(command === "report") { // Check if the command is .report.
