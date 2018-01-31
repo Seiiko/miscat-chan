@@ -912,6 +912,34 @@ client.on("message", async message => { // Message handler event.
 
   }
 
+    // HELP COMMAND
+    if(command === "phelp") { // Check if the command is .help.
+
+      if(args == 0) {
+  
+        const embedHelp = new Discord.RichEmbed()
+  
+          .setTitle("Check out what the Miscat Squad has to offer!")
+          .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+  
+          .setColor("#95dbdb")
+          .setDescription("For help with a specific command, type \".help [command]\".")
+  
+          .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
+  
+          .setURL("https://www.youtube.com/c/miscatsquad")
+  
+          .addField("Regular Commands",
+          ".help  |  .info  |  .katseries  |  .ping  |  .report")
+  
+          .addField("Fun Commands",
+          ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
+  
+          .addField("Admin Commands", ".ban  |  .kat  |  .kick  |  .mute  |  .purge  |  .say  |  .unmute", true)
+          .addField("Bot Owner Commands", ".avatar  |  .nick  |  .status  |  .test  |  .utag", true)
+  
+        message.channel.send(embedHelp);
+
   // REPORT COMMAND
   if(command === "report") { // Check if the command is .report.
   
