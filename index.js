@@ -1005,7 +1005,7 @@ client.on("message", async message => { // Message handler event.
 
     // Define the variables.
     let sug = args.join(" "); // Get the suggestion.
-    let sei = message.server.members.get("name", "Seiko#8672").id; // Get Sei's user id.
+    let sei = message.guild.members.get("name", "Seiko#8672").id; // Get Sei's user id.
 
     // Send the DM to Sei.
     sei.send(sug)
