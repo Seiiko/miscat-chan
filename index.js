@@ -37,7 +37,7 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
     .setURL("https://www.youtube.com/c/miscatsquad")
 
     .addField("Regular Commands",
-    ".help  |  .info  |  .katseries  |  .ping  |  .report  |  .suggestion")
+    ".help  |  .info  |  .katseries  |  .ping  |  .report")
 
     .addField("Fun Commands",
     ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
@@ -394,7 +394,7 @@ client.on("message", async message => { // Message handler event.
         .setURL("https://www.youtube.com/c/miscatsquad")
 
         .addField("Regular Commands",
-        ".help  |  .info  |  .katseries  |  .ping  |  .report  |  .suggestion")
+        ".help  |  .info  |  .katseries  |  .ping  |  .report")
 
         .addField("Fun Commands",
         ".catfact  |  .coinflip  |  .dieroll  |  .dogfact  |  .katgif  |  .motiv  |  .potato  |  .puppy  |  .rate  |  .seisfave")
@@ -906,27 +906,6 @@ client.on("message", async message => { // Message handler event.
       message.member.send(embedSeries);
       message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
 
-    } else if(args[0] === "suggestion" || args[0] === "sg"){
-
-      const embedSuggestion = new Discord.RichEmbed()
-
-        .setTitle("The .suggestions command.")
-        .setAuthor("Miscat-chan  |  Help", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
-
-        .setColor("#95dbdb")
-        .setDescription("Want a new feature to be added to the bot? Use this command to write a suggestion, which will be directly sent to Sei.")
-
-        .setFooter("Miscat-chan, the Miscat Squad bot! Made by Sei.", "https://cdn.discordapp.com/attachments/404965687015243787/404966440626814986/miscat-chan.png")
-
-        .addField("Usage",
-        ".katseries [suggestion]")
-
-        .addField("Aliases",
-        ".sg")
-
-      message.member.send(embedSuggestion);
-      message.channel.send(":white_check_mark: | A DM has been sent to you with all the help necessary!")
-
     } else {
       message.channel.send(":interrobang: | That command doesn't exist!\n:interrobang: | **Usage:** .help [command name]")
     }
@@ -1000,17 +979,6 @@ client.on("message", async message => { // Message handler event.
 
   }
 
-  // SUGGESTION COMMAND
-  if(command === "suggestion" || command === "sg"){ // Check if the command is .suggestion or .sg.
-
-    // Define the variables.
-    let sug = args.join(" "); // Get the suggestion.
-
-    // Send the DM to Sei.
-    "<@!"380484645281595392">".send(sug);
-
-  }
-    
 });
 
 // FUN COMMANDS
