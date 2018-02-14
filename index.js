@@ -257,54 +257,41 @@ client.on("message", async message => { // Message handler event.
   }
 
   // PURGE COMMAND
-  client.on("message", function(message) {
-    
-    // Define the variables.
-    let msg  = message.content.toUpperCase(); // Make message not case sensitive.
-    let sender = message.author; // Find who the message's author is.
-    let cont = message.content.slice(prefix.length).split(" "); // Slice off the prefix, put the rest in array based off the spaces.
-    let args = cont.slice(1); // Slice off the command in cont, only leaving the number left.
-    let mnt = message.mentions.users.first();
-  
-    // Command.
-    if (msg.startsWith(prefix + "PURGE")) { // Check if the command starts with .purge.
-      async function purge() { // Wrap in an async.
-        message.delete(); // Delete the command message.
-          
-        // Verify is user has the Owner role.
-        if (!message.member.roles.some(r=>["Moderator", "Admin", "NSFW Goddess"].includes(r.name))){ // If user doesn't have the Owner role.
-          message.channel.send(":no_entry_sign: | You don't have enough permission to perform the .purge command!") // Sends a message to the channel.
-          return; //Cancels the command.
+  if(command === "purge") {
+        
+    async function purge() { // Wrap in an async.
 
-        }
+        // Limit it to admins.
+        if (!message.member.roles.some(r => ["Moderator", "Admin", "NSFW Goddess"].includes(r.name))) // If user doesn't have the Bot Owner or Admin role.
+        return message.channel.send(":no_entry_sign:  |  You don't have enough permission to perform the .purge command!"); // Send a message to the channel.
+                    
+        // Verify if the variable is a number.
+        if (isNaN(args[0]))
+        return message.channel.send(":interrobang:  |  Please specify how many messages you want deleted.\n:interrobang:  |  **Usage:** .purge [number of messages]"); // Send a message to the channel.
 
-        if(args == 0){
-          message.channel.send(":interrobang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
-          return;
+        // Get the number of messages to be deleted.  
+        const fetched = await message.channel.fetchMessages({limit: args[0]});
 
-        } else if(isNaN(args[0])){
-          message.channel.send(":interrobang: | Please specify how many messages you want deleted. \n:interrobang: | **Usage:** .purge [number of messages]") // Send a message to the channel.
-          return;
+        // Delete the command message.
+        message.delete();
+                
+        // Delete the messages.
+        message.channel.bulkDelete(fetched)
+            .catch(error => message.channel.send(":interrobang:  |  Please provide a number between 2 and 100.\n:interrobang:  |  **Usage:** .purge [number of messages]")); // In case of error, post it in the channel.
 
-        } else if(!isNaN(args[0])){
-
-          // Grab the number used.
-          const fetched = await message.channel.fetchMessages({limit: args[0]});
-          
-          // Deleting the messages.
-          message.channel.bulkDelete(fetched)
-            .catch(error => message.channel.send("Error: ${error}")); // In case of error, post it in the channel.
-
-        }
-           
-      }
-       
-      //Calling the function.
-      purge();
-      
     }
-           
-  })
+             
+    //Calling the function.
+    purge();
+
+}
+
+module.exports.info = {
+
+    // Set the command name.
+    name: "purge"
+
+    }
 
   // MUTE COMMAND
   if(command === "mute") { // Check if command is .mute.
