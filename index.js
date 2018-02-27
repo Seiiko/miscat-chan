@@ -286,13 +286,6 @@ client.on("message", async message => { // Message handler event.
 
 }
 
-module.exports.info = {
-
-    // Set the command name.
-    name: "purge"
-
-    }
-
   // MUTE COMMAND
   if(command === "mute") { // Check if command is .mute.
 
@@ -352,6 +345,13 @@ client.on("message", async message => { // Message handler event.
     // Calculate the user's ping.
     const m = await message.channel.send("And..."); // Temporary message while calculating the ping.
     m.edit(`:ping_pong: | Your ping is ${m.createdTimestamp - message.createdTimestamp}ms.`) // Edit the message to show the user's ping.
+      
+  }
+
+  if(command === "missSei") { // Check if the command is .info.      
+      
+    //Send a message to the channel.
+    message.channel.send(":frowning: | I know, I miss her too. A lot.")
       
   }
    
