@@ -36,6 +36,7 @@
     "ffmpeg": "0.0.4",
     "ffmpeg-binaries": "^3.2.2-3",
     "motivational-quotes": "^1.0.0",
+    "opusscript": "0.0.6",
     "random-puppy": "^1.1.0",
     "random-quote": "0.0.1"
   }
