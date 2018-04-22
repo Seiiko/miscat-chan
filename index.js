@@ -7,6 +7,7 @@ const catFacts = require('cat-facts');
 const dogFacts = require('dog-facts');
 const randomPuppy = require('random-puppy');
 const motivQuotes = require('motivational-quotes');
+const Music = require('discord.js-musicbot-addon'); // Music bot dependency.
 
 // DEFINE THE NECESSARY VARIABLES
 var comOn = false; // Switch varible for the .day command.
@@ -51,6 +52,20 @@ client.on("guildMemberAdd", member => { // Listener event: user joining the serv
   member.send(":white_check_mark: | Here's a list of all the commands of the bot! Write \".help [command name]\" to get specific help with that command.");
   member.send(embedCommands);
     
+});
+
+// SET UP THE MUSIC CLIENT.
+const music = new Music(client, {
+  
+  youtubeKey: 'AIzaSyCom6F7OFxjJYHDNv6w_3Y2fP3CrTan9JU',
+  prefix: '.',
+  helpCmd: 'mhelp',
+  messageHelp: true,
+  botOwner: '380484645281595392',
+  ownerOverMember: true,
+  enableQueueStat: true,
+  logging: true
+
 });
 
 // BOT OWNER COMMANDS

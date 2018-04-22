@@ -31,6 +31,7 @@
   "dependencies": {
     "cat-facts": "^1.0.2",
     "discord.js": "^11.2.1",
+    "discord.js-musicbot-addon": "^1.10.3-aplha",
     "dog-facts": "^1.0.3",
     "motivational-quotes": "^1.0.0",
     "random-puppy": "^1.1.0",
